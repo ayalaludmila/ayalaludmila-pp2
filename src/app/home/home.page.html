@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title class="ion-text-center">EasyShop</ion-card-title>
+      </ion-card-content>
+      <div class=".ion-justify-content-center">
+        <img src="../assets/icon/BocetoLogo_editado.png" width="350" height="350">
+      </div>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>Controla tus gastos con el carrito, busca productos, guíate con el mapa y mas, con <b>EasyShop</b>!</ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-card class=".ion-justify-content-center">
+      <ion-card-content>
+        <ion-button color="primary" [routerLink]="['/menu']">
+          Iniciar
+        </ion-button>
+        <!--
+        <ion-input type="text" placeholder="Write your mail" #mail></ion-input>
+        <ion-input type="password" placeholder="Password" #password></ion-input>
+        <ion-button color="primary" (click)="checkUserPassword(mail, password)">
+          Enter
+        </ion-button>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-button color="primary" (click)="registerPage()">
+          Sign-in
+        </ion-button>
+        -->
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-subtitle>
+        Crea tu cuenta para tener un historial de compras y mas beneficios. Registra una nueva cuenta <a href="register-page/register-page.page.html">aquí</a> 
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-footer class=".ion-align-self-end">
+    <ion-card >
+      <ion-card-content >
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-center" size="12">
+              <ion-card-subtitle >Follow us in our socials media</ion-card-subtitle>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center" size="4">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </ion-col>
+            <ion-col class="ion-text-center" size="4">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </ion-col>
+            <ion-col class="ion-text-center" size="4">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-footer>
+</ion-content>

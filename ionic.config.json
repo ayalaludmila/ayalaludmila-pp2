@@ -1,0 +1,7 @@
+{
+  "name": "EasyShopApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
