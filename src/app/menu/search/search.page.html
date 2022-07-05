@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Buscar Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <!-- Default Searchbar -->
+  <ion-searchbar placeholder="Buscar producto" showCancelButton="focus"></ion-searchbar>
 </ion-content>
+<script>
+  import { ProductService } from "./products.service";
+  const searchbar = document.querySelector('ion-searchbar');
+  const items = ProductService.products; //Array.from(document.querySelector('ion-list').children);
+
+  searchbar.addEventListener('ionInput', handleInput);
+
+  function handleInput(event) {
+    const query = event.target.value.toLowerCase();
+    requestAnimationFrame(() => {
+      items.forEach((item) => {
+        const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
+        item.style.display = shouldShow ? 'block' : 'none';
+      });
+    });
+  }
+</script>

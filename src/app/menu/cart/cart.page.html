@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+    </ion-buttons>
     <ion-title>cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  asdoi
+
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      <ion-avatar slot="start">
+        <ion-img [src]="product.imageURL"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        {{product.title}}
+      </ion-label>
+      <ion-label>
+        {{product.price}}
+      </ion-label>
+      <ion-button color="danger" (click)="deleteProduct()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
