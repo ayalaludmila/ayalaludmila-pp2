@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card-content>
+  <ion-input type="text" placeholder="Write your mail" #mail></ion-input>
+  <ion-input type="password" placeholder="Password" #password></ion-input>
+  <ion-input type="password" placeholder="Repetir Password" #password2></ion-input>
+  <ion-button color="primary" (click)="registerPage()">
+    Registrarse
+  </ion-button>
+</ion-card-content>
+
+</ion-content>

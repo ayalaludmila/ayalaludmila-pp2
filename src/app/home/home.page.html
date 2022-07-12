@@ -24,18 +24,9 @@
         <ion-button color="primary" [routerLink]="['/menu']">
           Iniciar
         </ion-button>
-        <!--
-        <ion-input type="text" placeholder="Write your mail" #mail></ion-input>
-        <ion-input type="password" placeholder="Password" #password></ion-input>
-        <ion-button color="primary" (click)="checkUserPassword(mail, password)">
-          Enter
+        <ion-button color="secondary" [routerLink]="['/login']">
+          Iniciar Sesion
         </ion-button>
-      </ion-card-content>
-      <ion-card-content>
-        <ion-button color="primary" (click)="registerPage()">
-          Sign-in
-        </ion-button>
-        -->
       </ion-card-content>
     </ion-card>
   </ion-list>
@@ -43,7 +34,7 @@
   <ion-card>
     <ion-card-content>
       <ion-card-subtitle>
-        Crea tu cuenta para tener un historial de compras y mas beneficios. Registra una nueva cuenta <a href="register-page/register-page.page.html">aquí</a> 
+        Crea tu cuenta para tener un historial de compras y mas beneficios. Registra una nueva cuenta <ion-text [routerLink]="['../register']"><a href="">aquí</a></ion-text> 
       </ion-card-subtitle>
     </ion-card-content>
   </ion-card>

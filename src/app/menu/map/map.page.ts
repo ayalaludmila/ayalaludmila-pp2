@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapPage implements OnInit {
 
-  constructor() { }
+  constructor(public geolocation: Geolocation) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    this.geolocationNative();
+  }
+
+  geolocationNative(){
+    this.geolocation.getCurrentPosition().then((geoposition: GeolocationPosition) =>{
+      console.log(geoposition);
+    })
   }
 
 }
