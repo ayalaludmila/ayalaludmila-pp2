@@ -10,7 +10,7 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let product of products">
+    <ion-item *ngFor="let product of products" [id]="product.id" > <!-- id="#templateProduct" -->
       <ion-avatar slot="start">
         <ion-img [src]="product.imageURL"></ion-img>
       </ion-avatar>
@@ -18,12 +18,36 @@
         {{product.title}}
       </ion-label>
       <ion-label>
-        {{product.price}}
+        {{product.price | currency:'USD' }}
       </ion-label>
-      <ion-button color="danger" (click)="deleteProduct()">
+      <ion-button color="danger" (click)="deleteProduct(product.id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
 
 </ion-content>
+
+<!--
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-input type="text" placeholder="Write your mail" #mail></ion-input>
+    <ion-input type="password" placeholder="Password" #password></ion-input>
+    <ion-button color="primary" (click)="checkUserPassword(mail, password)">
+      Enter
+  </ion-button>
+
+</ion-content>
+
+
+-->
+

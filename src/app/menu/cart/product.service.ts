@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable, QueryList, ViewChildren } from '@angular/core';
+import { AnimationController } from '@ionic/angular';
 import { Product } from './product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
+  @ViewChildren('templateProduct', {read: ElementRef}) templateListRef: QueryList<ElementRef>;
 
   private products: Product[] = [
     {
@@ -27,7 +30,17 @@ export class ProductService {
     }
   ]
 
-  constructor() { }
+  constructor( private animationCtrl: AnimationController ) { }
+
+  deleteProductAnimation(product){
+    var element = document.getElementById(product);
+      this.animationCtrl.create() //const animation = this.animationCtrl.create()
+      .addElement(element) 
+      .duration(500)
+      .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+      .fromTo('opacity', '1', '0')
+      .play();
+  }
 
   getProducts() {
     return [...this.products]
@@ -54,6 +67,7 @@ export class ProductService {
     this.products = this.products.filter(product => {
       return product.id !== productId
     })
-    this.products = this.getProducts()
+    this.products = this.getProducts();
+    console.log(this.getProducts());
   }
 }
