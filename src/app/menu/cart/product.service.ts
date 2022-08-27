@@ -53,16 +53,19 @@ export class ProductService {
       })
     }
   }
-  /*
-  addProduct(title: string, imageURL: string, price: string) {
-    this.products.push({
+  
+  addProduct(product: Product) {
+    this.products.push(product);
+    /*
+    {
+      id: this.products.length + 1 + "",
       title,
       imageURL,
-      price:,
-      id: this.products.length + 1 + ""
-    });
+      price
+    }
+    */
   }
-*/
+
   deleteProduct(productId: string) {
     this.products = this.products.filter(product => {
       return product.id !== productId

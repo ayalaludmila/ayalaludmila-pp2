@@ -17,4 +17,21 @@
     </ion-fab-button>
   </ion-fab>
 
+  <ion-list>
+    <ion-item *ngFor="let product of products2" [id]="product.id" > <!-- id="#templateProduct" -->
+      <ion-avatar slot="start">
+        <ion-img [src]="product.imageURL"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        {{product.title}}
+      </ion-label>
+      <ion-label>
+        {{product.price | currency:'USD' }}
+      </ion-label>
+      <ion-button color="secondary" (click)="addToCart(product.id)"> 
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
