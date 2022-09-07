@@ -9,8 +9,8 @@
 
 <ion-content>
 
-  <ion-list>
-    <ion-item *ngFor="let product of products" [id]="product.id" > <!-- id="#templateProduct" -->
+  <ion-list *ngIf="products.length > 0; else noProducts" >
+    <ion-item *ngFor="let product of products" [id]="product.id" > 
       <ion-avatar slot="start">
         <ion-img [src]="product.imageURL"></ion-img>
       </ion-avatar>
@@ -25,29 +25,14 @@
       </ion-button>
     </ion-item>
   </ion-list>
+  <ng-template #noProducts>
+    <ion-text>
+      <p class="ion-text-center">No hay productos en el carrito.</p>
+    </ion-text>
+    <ion-button color="primary" (click)="goToSearch()">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ng-template>
 
 </ion-content>
-
-<!--
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-  <ion-input type="text" placeholder="Write your mail" #mail></ion-input>
-    <ion-input type="password" placeholder="Password" #password></ion-input>
-    <ion-button color="primary" (click)="checkUserPassword(mail, password)">
-      Enter
-  </ion-button>
-
-</ion-content>
-
-
--->
 

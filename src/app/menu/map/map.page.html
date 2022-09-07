@@ -8,10 +8,17 @@
 </ion-header>
 
 <ion-content>
+  <ion-label>
+    <ion-select interface="popover" placeholder="Selecciona un mapa" (ionChange)="handleChange($event)">
+      <ion-select-option value="mapa1">Mapa 1</ion-select-option>
+      <ion-select-option value="mapa2">Mapa 2</ion-select-option>
+      <ion-select-option value="mapa3">Mapa 3</ion-select-option>
+    </ion-select>
+  </ion-label>
   <ion-card>
     <ion-card-content class=".ion-align-items-center">
-      <ion-card-title >Mapa 1</ion-card-title>
-      <img src="../../assets/icon/mapa1.jpg">
+      <ion-card-title id="mapa_title">No seleccionado</ion-card-title>
+      <img id="img_mapa" src=""> <!-- ../../assets/icon/mapa1.jpg -->
     </ion-card-content>
   </ion-card>
 </ion-content>
