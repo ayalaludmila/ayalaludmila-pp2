@@ -4,10 +4,11 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 //import { Toast } from '@awesome-cordova-plugins/toast/ngx';
 import { ProductService } from "../cart/product.service";
 
+import { ToastController } from '@ionic/angular';
+
 // para realizar la conexion a la base de datos
 import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
-import { CartPage } from '../cart/cart.page';
+
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,7 @@ import { CartPage } from '../cart/cart.page';
 })
 export class SearchPage implements OnInit {
 
-  constructor( private barcodeScanner: BarcodeScanner, private productService: ProductService,
+  constructor( private barcodeScanner: BarcodeScanner, public productService: ProductService,
                public http: HttpClient, public toastController: ToastController) { }
 
   public items : Array<any> = [];
@@ -92,7 +93,7 @@ export class SearchPage implements OnInit {
       return product.id === productId
     });
     this.producService.addProduct(product);
-    console.log(this.producService.getProducts);
+    console.log(product);
     const toast = await this.toastController.create({
       message: 'Agregado',
       duration:  500, 

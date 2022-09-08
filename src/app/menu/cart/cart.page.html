@@ -20,6 +20,9 @@
       <ion-label>
         {{product.price | currency:'USD' }}
       </ion-label>
+      <ion-button color="secondary" (click)="addProduct(product.id)">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
       <ion-button color="danger" (click)="deleteProduct(product.id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>

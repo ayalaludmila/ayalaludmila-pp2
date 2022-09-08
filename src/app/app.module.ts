@@ -12,10 +12,13 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { ProductService } from "./menu/cart/product.service";
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [BarcodeScanner, Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ProductService, BarcodeScanner, Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

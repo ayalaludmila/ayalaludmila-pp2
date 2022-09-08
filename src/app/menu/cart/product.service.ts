@@ -31,7 +31,7 @@ private products: Product[] = [
   }
 ]
 
-constructor( private animationCtrl: AnimationController ) { }
+constructor( private animationCtrl: AnimationController) { }
 
 ngOnInit() {
 }
