@@ -8,7 +8,14 @@ import { ToastController } from '@ionic/angular';
 
 // para realizar la conexion a la base de datos
 import { HttpClient } from '@angular/common/http';
+import { CartService } from '../cart/cart.service';
 
+// para controlar ventana modal
+import { ModalController } from '@ionic/angular';
+import { ModalProduct } from './modal.product';
+
+import { Product } from "../cart/product.model";
+import { CartModel } from "../cart/cart-model";
 
 @Component({
   selector: 'app-search',
@@ -17,35 +24,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchPage implements OnInit {
 
-  constructor( private barcodeScanner: BarcodeScanner, public productService: ProductService,
-               public http: HttpClient, public toastController: ToastController) { }
+  constructor( 
+    private barcodeScanner: BarcodeScanner, 
+    public productService: ProductService,
+    public http: HttpClient, 
+    public toastController: ToastController, 
+    public cartService: CartService,
+    private modalCtrl: ModalController
+    ) { }
 
   public items : Array<any> = [];
 
   products2 = [
     {
       id: '1',
-      title: 'producto 1',
+      title: 'producto A',
       imageURL: 'https://jumboargentina.vteximg.com.br/arquivos/ids/693346-230-230/Madalenas-Rellenas-Ddl-Valente-180g-1-871306.jpg?v=637829769798300000',
-      price: '100' 
+      price: 100
     },
     {
       id: '2',
-      title: 'producto 2',
+      title: 'producto B',
       imageURL: 'https://jumboargentina.vteximg.com.br/arquivos/ids/640948-230-230/T-Taragui-S-e-Filtro-Diamantado-X-100saq-1-870732.jpg?v=637557379298100000',
-      price: '120'
+      price: 120
     },
     {
       id: '3',
-      title: 'producto 3',
+      title: 'producto C',
       imageURL: 'https://jumboargentina.vteximg.com.br/arquivos/ids/673954-230-230/Galletitas-Oreo-182-5g-1-858778.jpg?v=637711293977900000',
-      price: '50'
+      price: 50
     }
   ]
 
   producService = this.productService
-
-  //items = []
 
   firtsLoad = false;
   ngOnInit() {
@@ -64,7 +75,6 @@ export class SearchPage implements OnInit {
   handleInput(event) {
     this.items = Array.from(document.querySelector('ion-list').children);
     const query = event.target.value.toLowerCase();
-    //console.log(query);
     requestAnimationFrame(() => {
       
       this.items.forEach((item) => {
@@ -75,11 +85,6 @@ export class SearchPage implements OnInit {
     
   }
 
-  ionViewWillEnter() : void
-   {
-      
-   }
-
   leerCodigoBarra(){
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
@@ -88,18 +93,51 @@ export class SearchPage implements OnInit {
      });
   }
 
-  async addToCart(productId: string){
-    const product = this.products2.find(product => {
+  async addToCart(product: CartModel){
+    const cantidad1 = parseInt(document.getElementById("product.amount").innerText);
+
+    /*const product = await this.products2.find(product => {
       return product.id === productId
-    });
-    this.producService.addProduct(product);
-    console.log(product);
+    });*/
+    
+    this.cartService.addProduct(product);
     const toast = await this.toastController.create({
       message: 'Agregado',
       duration:  500, 
       position: 'bottom'
     });
     toast.present();
+
   }
 
+  sendProduct(productId: string){
+
+    const product = this.products2.find(product => {
+      return product.id === productId
+    });
+    
+  }
+
+  async openModal(product: Product) {
+    console.log(product)
+    const modal = await this.modalCtrl.create({
+      component: ModalProduct,
+      componentProps: { 
+        data: product //{ 
+               // id: productId,
+              //  title: productTitle,
+               // price: productPrice,
+               // imageURL: imageUrl
+             // }
+      }
+    });
+    
+    modal.present();
+    
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.addToCart(data);
+    }
+  }
 }

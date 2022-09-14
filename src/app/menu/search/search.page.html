@@ -22,13 +22,13 @@
       <ion-avatar slot="start">
         <ion-img [src]="product.imageURL"></ion-img>
       </ion-avatar>
-      <ion-label>
+      <ion-label id="product.id">
         {{product.title}}
       </ion-label>
       <ion-label>
         {{product.price | currency:'USD' }}
       </ion-label>
-      <ion-button color="secondary" (click)="addToCart(product.id)"> 
+      <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(product)"> <!-- (click)="addToCart(product.id)"  sendProduct(product.id) -->
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </ion-item>

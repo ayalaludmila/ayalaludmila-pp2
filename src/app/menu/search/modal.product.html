@@ -1,0 +1,59 @@
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+      </ion-buttons>
+      <ion-title>Indica la cantidad</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="confirm()">Confirm</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list lines="none">
+        <ion-item button="true" detail="false">
+          <ion-grid>
+            <ion-row class="ion-align-items-center">
+                <ion-col size="4" class="ion-align-items-center"></ion-col>
+                <ion-col size="3" class="ion-align-items-center">
+                    <img id="imageURL" src="">
+                </ion-col>
+                <ion-col size="4" class="ion-align-items-center"></ion-col>
+            </ion-row>
+
+            <ion-row class="ion-align-items-center">
+                <ion-col size="4" class="ion-align-items-center"></ion-col>
+                <ion-col size="5" class="ion-align-items-center">
+                    <ion-label id="product.title"></ion-label>
+                </ion-col>
+                <ion-col size="4" class="ion-align-items-center"></ion-col>
+            </ion-row>
+            
+            <ion-row class="ion-align-items-center">
+              <ion-col size="3" class="ion-align-items-center"></ion-col>
+              <ion-col size="2" class="ion-align-items-center">
+                <ion-button fill="clear" (click)="decreaceItem()">
+                  <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ion-col>
+
+              <ion-label id="product.amount">1</ion-label>
+
+              <ion-col size="2" class="ion-align-items-center">
+                <ion-button fill="clear" (click)="addItem()">
+                  <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+                </ion-button>
+                
+              </ion-col>
+              <!--<ion-button color="#1e1e1e" (click)="modal.dismiss()"> 
+              <ion-button color="#1e1e1e" (click)="addToCart(product.id)">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </ion-button>
+              -->
+            </ion-row>
+          </ion-grid>
+          
+        </ion-item>
+      </ion-list>
+  </ion-content>

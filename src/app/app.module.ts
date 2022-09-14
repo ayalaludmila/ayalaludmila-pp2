@@ -14,11 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ProductService } from "./menu/cart/product.service";
 
+import { SearchPage } from './menu/search/search.page';
+
+import { ModalProduct } from './menu/search/modal.product';
+
 
 @NgModule({
   declarations: [AppComponent],
   imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [ProductService, BarcodeScanner, Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ProductService, BarcodeScanner, Geolocation, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

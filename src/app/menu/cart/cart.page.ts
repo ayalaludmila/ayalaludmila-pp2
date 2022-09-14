@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from "./product.service";
 import { Animation, AnimationController } from '@ionic/angular';
+import { CartService } from './cart.service';
 
 import { Router } from "@angular/router";
 
@@ -15,25 +16,50 @@ export class CartPage implements OnInit {
 
   products = []
 
-  producService = this.productService
+  public element: HTMLElement
 
-  constructor( private productService: ProductService, private animationCtrl: AnimationController, private router: Router ) { 
+  constructor( private cartService: CartService, private animationCtrl: AnimationController, private router: Router ) { 
     
    }
 
   ngOnInit() {
-    //this.products = this.productService.getProducts()
+    this.products = this.cartService.getProducts();
+    this.cartService.updateTotal();
+  }
+
+  ionViewWillEnter() {
+    this.products = this.cartService.getProducts();
+    console.log(this.products);
+    this.cartService.updateTotal();
+    this.addFinishButton()
   }
 
   deleteProduct(product) {
-    this.productService.deleteProduct(product);
-    //this.productService.deleteProductAnimation(product);
-    const producService = this.productService
+    
+    this.cartService.deleteProduct(product);
     //producService.deleteProductAnimation(product);
-    document.getElementById(product).remove();
+    
+    this.cartService.updateTotal();
+    if (this.cartService.products.length === 0) {
+      window.location.reload();
+    }
   }
 
   goToSearch() {
     this.router.navigate(['search']);
+  }
+
+  addAmount(product){
+    this.cartService.addAmount(product);
+    this.cartService.updateTotal();
+  }
+
+  addFinishButton(){
+    const button = document.getElementById("finishButton")
+    if (this.cartService.products.length === 0) {
+      button.style.display = "none";
+    }else{
+      button.style.display = "inline";
+    }
   }
 }

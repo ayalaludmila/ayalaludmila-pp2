@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
+import { ViewChild } from '@angular/core';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
   styleUrls: ['./map.page.scss'],
 })
 export class MapPage implements OnInit {
+
+  @ViewChild('popover') popover;
+
+  isOpen = false;
 
   constructor(public geolocation: Geolocation) { }
 
@@ -18,9 +24,17 @@ export class MapPage implements OnInit {
     this.geolocationNative();
   }
 
+
   geolocationNative(){
     this.geolocation.getCurrentPosition().then((geoposition: GeolocationPosition) =>{
       console.log(geoposition);
+      let watch = this.geolocation.watchPosition();
+      watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+       //data.coords.latitude;
+      // data.coords.longitude;
+       console.log(data);
+      });
     })
   }
 
@@ -56,7 +70,15 @@ export class MapPage implements OnInit {
     console.log(e.detail.value);
   }
 
-  showProduct(p){
-    console.log("Producto " + p);
+  showProduct(p, e){
+    const productos = "Producto " + p;
+    this.presentPopover(e);
+  }
+
+ 
+
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
   }
 }

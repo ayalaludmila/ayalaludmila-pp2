@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CartService } from "./cart/cart.service";
 
-import { Product } from './cart/product.model';
-import { ProductService } from "./cart/product.service";
 
 @Component({
   selector: 'app-menu',
@@ -13,19 +12,23 @@ export class MenuPage implements OnInit {
 
   public element: HTMLElement
 
-   products = []
+  
 
-  constructor( private productService: ProductService ) { }
+  constructor( public cartService: CartService ) { }
 
   ngOnInit() {
-    //this.products = this.productService.getProducts();
     this.element = document.getElementById('cartBadge');
   }
 
   ionViewWillEnter() {
+    var total = 0;
     
-    this.element.innerHTML = this.products.length.toString();
+    for (const p of this.cartService.products) {
+      total = total + p.amount; 
+    }
     console.log(this.element.innerHTML);
-   }
+    //this.element.innerHTML = this.cartService.products.length.toString();
+    this.element.innerHTML = total.toString(); 
+  }
 
 }
