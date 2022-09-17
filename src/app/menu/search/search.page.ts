@@ -123,12 +123,7 @@ export class SearchPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ModalProduct,
       componentProps: { 
-        data: product //{ 
-               // id: productId,
-              //  title: productTitle,
-               // price: productPrice,
-               // imageURL: imageUrl
-             // }
+        data: product
       }
     });
     

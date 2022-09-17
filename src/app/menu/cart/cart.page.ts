@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from "./product.service";
 import { Animation, AnimationController } from '@ionic/angular';
 import { CartService } from './cart.service';
 
@@ -29,16 +28,12 @@ export class CartPage implements OnInit {
 
   ionViewWillEnter() {
     this.products = this.cartService.getProducts();
-    console.log(this.products);
     this.cartService.updateTotal();
     this.addFinishButton()
   }
 
   deleteProduct(product) {
-    
     this.cartService.deleteProduct(product);
-    //producService.deleteProductAnimation(product);
-    
     this.cartService.updateTotal();
     if (this.cartService.products.length === 0) {
       window.location.reload();

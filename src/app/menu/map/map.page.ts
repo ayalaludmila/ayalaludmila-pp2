@@ -71,13 +71,14 @@ export class MapPage implements OnInit {
   }
 
   showProduct(p, e){
-    const productos = "Producto " + p;
-    this.presentPopover(e);
+    const productoSeleccionado = "Producto " + p;
+    this.presentPopover(e, productoSeleccionado);
   }
 
  
 
-  presentPopover(e: Event) {
+  presentPopover(e: Event, t: string) {
+    
     this.popover.event = e;
     this.isOpen = true;
   }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { Product } from '../cart/product.model';
 import { AnimationController } from '@ionic/angular';
 import { CartModel } from "./cart-model";
 
@@ -17,7 +16,7 @@ export class CartService {
     var element = document.getElementById(product);
       this.animationCtrl.create() //const animation = this.animationCtrl.create()
       .addElement(element) 
-      .duration(500)
+      .duration(250)
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
       .fromTo('opacity', '1', '0')
       .play();
@@ -44,18 +43,21 @@ export class CartService {
   }
 
   deleteProduct(productId: string) {
-    this.products.find(product => {
-      if (product.amount > 1) {
-        this.products.find(product => {
+    
+    const product = this.products.find(product => {
           return product.id == productId
-        }).amount--;
-      }else{
-        document.getElementById(productId).remove();
-        this.products = this.products.filter(product => {
-        return product.id !== productId
-      })
-      }
-    })
+        });
+    
+    if (product.amount > 1) {
+      const index = this.products.findIndex((obj => obj.id == productId));
+      return this.products[index].amount--;
+    }else{
+      this.deleteProductAnimation(productId);
+      setTimeout(function(){ document.getElementById(productId).remove(); }, 250);
+      this.products = this.products.filter(product => {
+      return product.id !== productId});
+    }
+    return;
   }
 
   addAmount(productId: string){

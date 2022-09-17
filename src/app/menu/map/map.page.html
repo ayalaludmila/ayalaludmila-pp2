@@ -23,7 +23,7 @@
         <area  alt="" title="producto 1" (click)="showProduct('1', $event)" shape="rect" coords="92,0,352,161"       />
         <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
           <ng-template>
-            <ion-content class="ion-padding">Producto 1</ion-content>
+            <ion-content id="popover" class="ion-padding">Producto 1</ion-content>
           </ng-template>
         </ion-popover>
         <area  alt="" title="producto 2" (click)="showProduct('2')"  shape="rect" coords="87,172,350,279"       />
