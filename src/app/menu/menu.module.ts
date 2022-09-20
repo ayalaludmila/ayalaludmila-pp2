@@ -8,12 +8,15 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 
 import { MenuPage } from './menu.page';
 
+import { SwiperModule } from "swiper/angular";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuPageRoutingModule
+    MenuPageRoutingModule,
+    SwiperModule
   ],
   declarations: [MenuPage]
 })

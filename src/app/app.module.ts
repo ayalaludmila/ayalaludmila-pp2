@@ -18,10 +18,12 @@ import { SearchPage } from './menu/search/search.page';
 
 import { ModalProduct } from './menu/search/modal.product';
 
+import { SwiperModule } from 'swiper/angular';
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule],
   providers: [ProductService, BarcodeScanner, Geolocation, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

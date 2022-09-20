@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "EasyShopApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

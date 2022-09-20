@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { CartService } from "./cart/cart.service";
 
+import { SwiperModule } from 'swiper/angular';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
+  imports: [ SwiperModule ],
   styleUrls: ['./menu.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MenuPage implements OnInit {
 
@@ -14,7 +17,7 @@ export class MenuPage implements OnInit {
 
   
 
-  constructor( public cartService: CartService ) { }
+  constructor( public cartService: CartService , public swiperModule: SwiperModule) { }
 
   ngOnInit() {
     this.element = document.getElementById('cartBadge');
