@@ -31,7 +31,7 @@ export class MapPage implements OnInit {
       let watch = this.geolocation.watchPosition();
       watch.subscribe((data) => {
       // data can be a set of coordinates, or an error (if an error occurred).
-       //data.coords.latitude;
+      //data.coords.latitude;
       // data.coords.longitude;
        console.log(data);
       });
@@ -74,8 +74,6 @@ export class MapPage implements OnInit {
     const productoSeleccionado = "Producto " + p;
     this.presentPopover(e, productoSeleccionado);
   }
-
- 
 
   presentPopover(e: Event, t: string) {
     

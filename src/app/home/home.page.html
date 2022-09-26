@@ -1,3 +1,4 @@
+<!--
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-card>
@@ -16,7 +17,57 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <swiper>
+      <ng-template swiperSlide>
+        <ion-thumbnail>
+          <img alt="" src="../assets/carrito.png">
+        </ion-thumbnail>
+        <ion-card-title>Controla tus gastos con el carrito</ion-card-title>
+      </ng-template>
+  
+      <ng-template swiperSlide>
+        <ion-thumbnail>
+          <img alt="" src="../assets/lector_qr.png">
+        </ion-thumbnail>
+        <ion-card-title>Agrega productos con codigo de barras o QR</ion-card-title>
+      </ng-template>
+  
+      <ng-template swiperSlide>
+        <ion-thumbnail>
+          <img alt="" src="../assets/mapa.png">
+        </ion-thumbnail>
+        <ion-card-title>Guíate con el mapa interactivo y mucho más con <b>EasyShop</b>!</ion-card-title>
+      </ng-template>
+    </swiper>
+  </ion-toolbar>
+</ion-header>
+-->
 <ion-content>
+  
+  <swiper>
+    <ng-template swiperSlide>
+      
+        <ion-img alt="" src="../assets/carrito.png"></ion-img>
+      
+      <h2>Controla tus gastos con el carrito</h2>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      
+        <ion-img alt="" src="../assets/lector_qr.png"></ion-img>
+      
+      <h2>Agrega productos con codigo de barras o QR</h2>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      
+        <ion-img alt="" src="../assets/mapa.png"></ion-img>
+      
+      <h2>Guíate con el mapa interactivo y mucho más con <b>EasyShop</b>!</h2>
+    </ng-template>
+  </swiper>
 
   <ion-grid>
     <ion-row>
@@ -45,24 +96,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!--
-  <ion-list>
-    <ion-card class="ion-justify-content-center ion-no-border">
-      <ion-card-content>
-        <ion-button color="primary" [routerLink]="['/menu']">
-          Iniciar
-        </ion-button>        
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="ion-justify-content-center ion-no-border">
-      <ion-card-content>
-        <ion-button color="secondary" [routerLink]="['/login']">
-          Iniciar Sesion
-        </ion-button>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
-  -->
 
   <ion-card>
     <ion-card-content>
@@ -72,6 +105,7 @@
     </ion-card-content>
   </ion-card>
 
+  <!--
   <ion-footer class="ion-align-self-end">
     <ion-card >
       <ion-card-content >
@@ -97,3 +131,4 @@
     </ion-card>
   </ion-footer>
 </ion-content>
+-->

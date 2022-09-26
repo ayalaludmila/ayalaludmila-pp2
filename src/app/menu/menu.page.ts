@@ -15,8 +15,6 @@ export class MenuPage implements OnInit {
 
   public element: HTMLElement
 
-  
-
   constructor( public cartService: CartService , public swiperModule: SwiperModule) { }
 
   ngOnInit() {
@@ -29,8 +27,6 @@ export class MenuPage implements OnInit {
     for (const p of this.cartService.products) {
       total = total + p.amount; 
     }
-    console.log(this.element.innerHTML);
-    //this.element.innerHTML = this.cartService.products.length.toString();
     this.element.innerHTML = total.toString(); 
   }
 

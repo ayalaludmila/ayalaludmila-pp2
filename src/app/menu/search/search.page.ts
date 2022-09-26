@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { BarcodeScanner, BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 //import { Toast } from '@awesome-cordova-plugins/toast/ngx';
 import { ProductService } from "../cart/product.service";
 
@@ -62,10 +62,7 @@ export class SearchPage implements OnInit {
   ngOnInit() {
     if (this.firtsLoad === false) 
     {
-      //this.products2 = this.productService.getProducts();
-
       const searchbar = document.querySelector('ion-searchbar');
-      //this.items = Array.from(document.querySelector('ion-list').children);
       searchbar.addEventListener('ionInput', this.handleInput);
 
     }
@@ -87,7 +84,9 @@ export class SearchPage implements OnInit {
 
   leerCodigoBarra(){
     this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
+      
+      this.searchProduct(barcodeData)
+
      }).catch(err => {
          console.log('Error', err);
      });
@@ -95,10 +94,6 @@ export class SearchPage implements OnInit {
 
   async addToCart(product: CartModel){
     const cantidad1 = parseInt(document.getElementById("product.amount").innerText);
-
-    /*const product = await this.products2.find(product => {
-      return product.id === productId
-    });*/
     
     this.cartService.addProduct(product);
     const toast = await this.toastController.create({
@@ -119,7 +114,6 @@ export class SearchPage implements OnInit {
   }
 
   async openModal(product: Product) {
-    console.log(product)
     const modal = await this.modalCtrl.create({
       component: ModalProduct,
       componentProps: { 
@@ -135,4 +129,14 @@ export class SearchPage implements OnInit {
       this.addToCart(data);
     }
   }
+
+  async searchProduct(code: BarcodeScanResult) {
+    //buscar producto en base de datos 
+    const modal = await this.modalCtrl.create({
+      component: ModalProduct,
+      componentProps: { 
+        data: code
+      }
+    });
+  }  
 }
