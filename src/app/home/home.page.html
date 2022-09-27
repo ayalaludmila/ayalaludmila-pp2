@@ -47,26 +47,40 @@
 <ion-content>
   
   <swiper>
+    
     <ng-template swiperSlide>
-      
-        <ion-img alt="" src="../assets/carrito.png"></ion-img>
-      
-      <h2>Controla tus gastos con el carrito</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-img alt="" src="../assets/carrito.png"></ion-img>
+        </ion-row>
+        <ion-row>
+          <h3>Controla tus gastos con el carrito</h3>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+        
+      <ng-template swiperSlide>
+      <ion-grid>
+        <ion-row>
+          <ion-img alt="" src="../assets/lector_qr.png"></ion-img>
+        </ion-row>
+        <ion-row>
+          <h3>Agrega productos con codigo de barras o QR</h3>
+        </ion-row>
+      </ion-grid>
     </ng-template>
 
     <ng-template swiperSlide>
-      
-        <ion-img alt="" src="../assets/lector_qr.png"></ion-img>
-      
-      <h2>Agrega productos con codigo de barras o QR</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-img alt="" src="../assets/mapa.png"></ion-img>
+        </ion-row>
+        <ion-row>
+          <h3>Guíate con el mapa interactivo y mucho más con <b>EasyShop</b>!</h3>
+        </ion-row>
+      </ion-grid>
     </ng-template>
 
-    <ng-template swiperSlide>
-      
-        <ion-img alt="" src="../assets/mapa.png"></ion-img>
-      
-      <h2>Guíate con el mapa interactivo y mucho más con <b>EasyShop</b>!</h2>
-    </ng-template>
   </swiper>
 
   <ion-grid>

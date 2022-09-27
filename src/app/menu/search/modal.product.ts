@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { SearchPage } from './search.page';
 
 import { CartModel } from '../cart/cart-model';
+import { BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-modal-example',
@@ -12,13 +13,19 @@ import { CartModel } from '../cart/cart-model';
 export class ModalProduct {
     
   public data : CartModel;
-  
+  public qrData: BarcodeScanResult;
+  public flag : boolean;
 
   constructor(private modalCtrl: ModalController, public searchPage: SearchPage) {}
 
   ngOnInit() {
-    document.getElementById("product.title").innerText = this.data.title;
-    document.getElementById("imageURL").setAttribute("src", this.data.imageURL);
+    if (this.flag) {
+      document.getElementById("product.title").innerText = this.qrData.text;
+      document.getElementById("imageURL").setAttribute("src", this.qrData.text);
+    }else{
+      document.getElementById("product.title").innerText = this.data.title;
+      document.getElementById("imageURL").setAttribute("src", this.data.imageURL);
+    }
   }
 
   cancel() {

@@ -33,6 +33,8 @@ export class SearchPage implements OnInit {
     private modalCtrl: ModalController
     ) { }
 
+  public barcode_flag = false;
+
   public items : Array<any> = [];
 
   products2 = [
@@ -84,8 +86,8 @@ export class SearchPage implements OnInit {
 
   leerCodigoBarra(){
     this.barcodeScanner.scan().then(barcodeData => {
-      
-      this.searchProduct(barcodeData)
+      this.barcode_flag = true
+      this.searchProduct(barcodeData, this.barcode_flag)
 
      }).catch(err => {
          console.log('Error', err);
@@ -130,12 +132,13 @@ export class SearchPage implements OnInit {
     }
   }
 
-  async searchProduct(code: BarcodeScanResult) {
+  async searchProduct(code: BarcodeScanResult , bFlag: boolean) {
     //buscar producto en base de datos 
     const modal = await this.modalCtrl.create({
       component: ModalProduct,
       componentProps: { 
-        data: code
+        qrData: code,
+        flag: bFlag
       }
     });
   }  
