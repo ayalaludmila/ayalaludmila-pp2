@@ -2,8 +2,12 @@
 @import '~swiper/scss';
 @import '~@ionic/angular/css/ionic-swiper';
 
-ion-tabs {
-    height: 30%;
+ion-tab-bar {
+  min-height: 80px;
+}
+ion-icon{
+  min-height: 30px;
+  min-width: 30px;
 }
 
 swiper {

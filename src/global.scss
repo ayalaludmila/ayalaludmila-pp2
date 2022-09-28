@@ -29,21 +29,34 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
 
+*{
+  font-family: 'IBM Plex Mono', monospace;
+  color: black;
+}
 
-
+#modal{
+  
+  border: 3px;
+  border-style: solid;
+}
 
 ion-modal {
-    --height: 50%;
-    --border-radius: 16px;
-  }
+  --height: 50%;
   
-  ion-modal::part(backdrop) {
-    background: rgba(209, 213, 219);
-    opacity: 1;
-  }
-  
-  ion-modal ion-toolbar {
-    --background: rgb(14 116 144);
-    --color: white;
-  }
+}
+
+ion-modal ion-list{
+  height: 100%;  
+}
+
+ion-modal::part(backdrop) {
+  background: rgb(73, 73, 73);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
+}

@@ -6,21 +6,42 @@
     <ion-title>Menu</ion-title>
   </ion-toolbar>
 </ion-header>
-
-
-
-<ion-content>
+<!--
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Start Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+      <ion-item>Menu Item</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+-->
+<ion-content class="ion-page" id="main-content">
 
   <swiper>
-    <ng-template swiperSlide>Oferta 1</ng-template>
-    <ng-template swiperSlide>Oferta 2</ng-template>
-    <ng-template swiperSlide>Oferta 3</ng-template>
+    <ng-template swiperSlide>
+      <img height="100%" src="../../assets/oferta1.jpg">
+    </ng-template>
+    <ng-template swiperSlide>
+      <img height="100%"  src="../../assets/oferta2.jpg">
+    </ng-template>
+    <ng-template swiperSlide>
+      <img height="100%"  src="../../assets/oferta3.jpg">
+    </ng-template>
   </swiper>
 
   <ion-tabs>
 
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="cart">
+      <ion-tab-button  tab="cart">
         <ion-icon class="ion-color-dark" name="cart"></ion-icon>
         <ion-label>Cart</ion-label>
         <ion-badge id="cartBadge">0</ion-badge> <!-- para agregar icono de notificacion -->

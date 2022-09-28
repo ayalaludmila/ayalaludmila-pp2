@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CartService } from "./cart/cart.service";
 
 import { SwiperModule } from 'swiper/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
@@ -15,7 +16,7 @@ export class MenuPage implements OnInit {
 
   public element: HTMLElement
 
-  constructor( public cartService: CartService , public swiperModule: SwiperModule) { }
+  constructor( public cartService: CartService , public swiperModule: SwiperModule, private menu: MenuController) { }
 
   ngOnInit() {
     this.element = document.getElementById('cartBadge');
@@ -29,5 +30,11 @@ export class MenuPage implements OnInit {
     }
     this.element.innerHTML = total.toString(); 
   }
+
+  async openFirst() {
+    this.menu.enable(true, 'first');
+    await this.menu.open('first');
+  }
+  
 
 }

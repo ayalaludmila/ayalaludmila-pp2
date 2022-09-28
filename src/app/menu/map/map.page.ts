@@ -33,7 +33,7 @@ export class MapPage implements OnInit {
       // data can be a set of coordinates, or an error (if an error occurred).
       //data.coords.latitude;
       // data.coords.longitude;
-       console.log(data);
+       //console.log(data);
       });
     })
   }
@@ -72,6 +72,7 @@ export class MapPage implements OnInit {
 
   showProduct(p, e){
     const productoSeleccionado = "Producto " + p;
+    console.log(p, e);
     this.presentPopover(e, productoSeleccionado);
   }
 
