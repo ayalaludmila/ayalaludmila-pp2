@@ -43,7 +43,7 @@
 }
 
 ion-modal {
-  --height: 50%;
+  --height: 35%;
   
 }
 
@@ -52,7 +52,7 @@ ion-modal ion-list{
 }
 
 ion-modal::part(backdrop) {
-  background: rgb(73, 73, 73);
+  background: rgb(39, 39, 39);
   opacity: 1;
 }
 
@@ -60,3 +60,4 @@ ion-modal ion-toolbar {
   --background: rgb(14 116 144);
   --color: white;
 }
+

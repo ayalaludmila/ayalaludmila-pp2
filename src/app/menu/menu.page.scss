@@ -3,6 +3,7 @@
 @import '~@ionic/angular/css/ionic-swiper';
 
 ion-tab-bar {
+  height: 10%;
   min-height: 80px;
 }
 ion-icon{
@@ -10,8 +11,10 @@ ion-icon{
   min-width: 30px;
 }
 
-swiper {
-    height: 80%;
+#swiper-menu {
+    height: 89%;
+    background-image: 
+    radial-gradient(ellipse farthest-corner at 0 140%, #9ED2C6 0%, #9ED2C6 70%, #F7ECDE 70%);
   }
 
   .swiper-slide {
@@ -27,6 +30,7 @@ swiper {
     max-width: 80%;
     margin: 60px 0 40px;
     pointer-events: none;
+    background-image: none;
   }
 
   b {
