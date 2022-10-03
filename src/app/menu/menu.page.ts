@@ -30,8 +30,7 @@ export class MenuPage implements OnInit {
     }
     this.element.innerHTML = total.toString(); 
     
-    const el = document.getElementById('swiper-slide');
-    el.style.setProperty('--background-image', 'none');
+    
   }
 
   async openFirst() {

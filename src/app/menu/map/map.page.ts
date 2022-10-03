@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 import { ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalProductMap } from './modal.product.map';
 
 @Component({
   selector: 'app-map',
@@ -15,7 +17,7 @@ export class MapPage implements OnInit {
 
   isOpen = false;
 
-  constructor(public geolocation: Geolocation) { }
+  constructor(public geolocation: Geolocation, public modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
@@ -46,21 +48,21 @@ export class MapPage implements OnInit {
       case 'mapa1':
           mapaTitle.innerHTML = 'Mapa 1'; 
           element.setAttribute('src', '../../assets/icon/mapa1.jpg');
-          element.setAttribute('usemap', 'map1');
+          element.setAttribute('usemap', '#map1');
           map.setAttribute('name', 'map1');
         break;
       
       case 'mapa2':
           mapaTitle.innerHTML = 'Mapa 2'; 
           element.setAttribute('src', '../../assets/icon/mapa2.jpg');
-          element.setAttribute('usemap', 'map2');
+          element.setAttribute('usemap', '#map2');
           map.setAttribute('name', 'map2');
           break;
 
       case 'mapa3':
           mapaTitle.innerHTML = 'Mapa 3'; 
           element.setAttribute('src', '../../assets/icon/mapa3.jpg');
-          element.setAttribute('usemap', 'map3');
+          element.setAttribute('usemap', '#map3');
           map.setAttribute('name', 'map3');
           break;
 
@@ -72,8 +74,9 @@ export class MapPage implements OnInit {
 
   showProduct(p, e){
     const productoSeleccionado = "Producto " + p;
-    console.log(p, e);
-    this.presentPopover(e, productoSeleccionado);
+    console.log(productoSeleccionado);
+    //this.presentPopover(e, productoSeleccionado);
+    this.openModal(productoSeleccionado);
   }
 
   presentPopover(e: Event, t: string) {
@@ -81,4 +84,20 @@ export class MapPage implements OnInit {
     this.popover.event = e;
     this.isOpen = true;
   }
+
+  async openModal(product) {
+    const modal = await this.modalCtrl.create({
+      component: ModalProductMap,
+      componentProps: { 
+        data: product
+      }
+    });
+    
+    modal.present();
+    
+    const { data, role } = await modal.onWillDismiss();
+
+ 
+  }
+
 }

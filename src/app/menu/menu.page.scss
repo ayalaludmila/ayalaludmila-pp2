@@ -11,10 +11,13 @@ ion-icon{
   min-width: 30px;
 }
 
+ion-tabs{
+  background-image: 
+  radial-gradient(ellipse farthest-corner at 0 140%, #9ED2C6 0%, #9ED2C6 70%, #F7ECDE 70%);
+}
+
 #swiper-menu {
-    height: 89%;
-    background-image: 
-    radial-gradient(ellipse farthest-corner at 0 140%, #9ED2C6 0%, #9ED2C6 70%, #F7ECDE 70%);
+    height: 90%;
   }
 
   .swiper-slide {

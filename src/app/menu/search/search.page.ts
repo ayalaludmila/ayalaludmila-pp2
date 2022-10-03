@@ -100,7 +100,7 @@ export class SearchPage implements OnInit {
     this.cartService.addProduct(product);
     const toast = await this.toastController.create({
       message: 'Agregado',
-      duration:  500, 
+      duration:  700, 
       position: 'bottom'
     });
     toast.present();
@@ -133,7 +133,7 @@ export class SearchPage implements OnInit {
   }
 
   async searchProduct(code: BarcodeScanResult , bFlag: boolean) {
-    //buscar producto en base de datos 
+    //buscariamos producto en base de datos 
     const modal = await this.modalCtrl.create({
       component: ModalProduct,
       componentProps: { 

@@ -37,14 +37,13 @@
 }
 
 #modal{
-  
-  border: 3px;
+  border: 5px;
   border-style: solid;
 }
 
 ion-modal {
-  --height: 35%;
-  
+  --min-height: 35%;
+  --max-height: 40%;
 }
 
 ion-modal ion-list{

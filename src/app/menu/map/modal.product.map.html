@@ -1,12 +1,8 @@
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
-      </ion-buttons>
-      <ion-title>Indica la cantidad</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="confirm()">Confirm</ion-button>
-      </ion-buttons>
+
+      <ion-title size="small" horizontal="center">Productos en zona seleccionada</ion-title>
+ 
     </ion-toolbar>
   </ion-header>
 
@@ -33,18 +29,8 @@
             <ion-row class="ion-align-items-center">
               <ion-col size="3" class="ion-align-items-center"></ion-col>
               <ion-col size="2" class="ion-align-items-center">
-                <ion-button fill="clear" (click)="decreaceItem()">
-                  <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
-                </ion-button>
               </ion-col>
-
-              <ion-label id="product.amount">1</ion-label>
-
               <ion-col size="2" class="ion-align-items-center">
-                <ion-button fill="clear" (click)="addItem()">
-                  <ion-icon name="add-circle" slot="icon-only"></ion-icon>
-                </ion-button>
-                
               </ion-col>
             </ion-row>
           </ion-grid>

@@ -19,7 +19,7 @@ export class ModalProduct {
   constructor(private modalCtrl: ModalController, public searchPage: SearchPage) {}
 
   ngOnInit() {
-    if (this.flag) {
+    if (this.flag === true) {
       document.getElementById("product.title").innerText = this.qrData.text;
       document.getElementById("imageURL").setAttribute("src", this.qrData.text);
     }else{
