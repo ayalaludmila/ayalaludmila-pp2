@@ -3,6 +3,8 @@ ion-img{
   min-width: 70px;
   max-height: 300px;
   max-width: 300px;
+  height: 250px;
+  width: 250px;
 }
 
 #container {
@@ -30,6 +32,6 @@ ion-img{
   text-decoration: none;
 }
 
-#swiper2 {
-  background: url('../../assets/fondos.jpg') 3729 3761;
+ion-content {
+  --background: linear-gradient(180deg, rgba(14,116,144,1) 38%, rgba(158,210,198,1) 78%);
 }

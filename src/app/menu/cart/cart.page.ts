@@ -3,6 +3,7 @@ import { Animation, AnimationController } from '@ionic/angular';
 import { CartService } from './cart.service';
 
 import { Router } from "@angular/router";
+import { ModalController } from "@ionic/angular";
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,12 @@ export class CartPage implements OnInit {
 
   public element: HTMLElement
 
-  constructor( private cartService: CartService, private animationCtrl: AnimationController, private router: Router ) { 
+  constructor( 
+    private cartService: CartService, 
+    private animationCtrl: AnimationController, 
+    private router: Router,
+    public modalCtrl: ModalController
+    ) { 
     
    }
 
@@ -56,5 +62,15 @@ export class CartPage implements OnInit {
     }else{
       button.style.display = "inline";
     }
+  }
+
+  async finalizarCompra(){
+    const modal = await this.modalCtrl.create({
+      component: ModalPaymentPage,
+      componentProps: { 
+        qrData: code,
+        flag: bFlag
+      }
+    });
   }
 }
