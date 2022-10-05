@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LottieSplashScreen } from '@awesome-cordova-plugins/lottie-splash-screen/ngx';
+import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-root',
@@ -7,8 +10,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  productoSeleccionado: string = ""
   
-  constructor() {}
+  constructor
+  ( 
+    private lottieSplashScreen: LottieSplashScreen,
+    private platform : Platform
+  ) 
+    {
+    this.initializeApp();
+    }
+
+  initializeApp(){
+    this.lottieSplashScreen.show();
+    this.platform.ready().then(() => {
+      setTimeout(() => {
+        this.lottieSplashScreen.hide();
+      }, 2000);
+    })
+  }
 
 }

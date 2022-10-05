@@ -1,59 +1,63 @@
-import { PayTabs } from '@awesome-cordova-plugins/paytabs/ngx';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { IAPProduct } from '@awesome-cordova-plugins/in-app-purchase-2';
 
-@Component({
-    selector: 'app-cart',
-    templateUrl: './ModalPaymentPage.html',
-  })
+//import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
+
+
+Component({
+  selector: 'app-modal-example',
+  templateUrl: 'ModalPaymentPage.html',
+})
+
+const PRODUCT_GEMS_KEY = '1';
+const PRODUCT_PRO_KEY = '2';
 
 export class ModalPaymentPage {
 
-constructor(private paytabs: PayTabs) { }
+ gems = 0;
+ isPRO = false;
+ products: IAPProduct[] = [];
 
-/*
-billingDetails: PaymentSDKBillingDetails = {
-   name: "John Smith",
-   email: "email@domain.com",
-   phone: "+201111111111",
-   addressLine: "Address line",
-   city: "Dubai",
-   state: "Dubai",
-   countryCode: "AE",
-   zip: "1234"
- };
+constructor( private ref: ChangeDetectorRef) 
+{ 
+
+  //this.registerProducts();
+  //this.setupListeners();
+
+}
+
+
+
+/* 
+registerProducts(){
+  this.store.register({
+    id: PRODUCT_GEMS_KEY,
+    type: this.store.CONSUMABLE
+  });
+
+  this.store.register({
+    id: PRODUCT_PRO_KEY,
+    type: this.store.NON_CONSUMABLE
+  });
+
+  this.store.refresh();
+}
+
+setupListeners(){
+  this.store.when('product').approved((p: IAPProduct) => {
+    if (p.id === PRODUCT_PRO_KEY) {
+      this.isPRO = true;
+    }else if (p.id === PRODUCT_GEMS_KEY){
+      this.gems+= 100;
+    }
+
+    this.ref.detectChanges();
+
+    return p.verify();
+  })
+  .verified((p: IAPProduct) => p.finish());
+
+  this.store.when
+}
 */
- configuration: PaymentSDKConfiguration = {
-   profileID: "*profile id*",
-   serverKey: "*server key*",
-   clientKey: "*cleint key*",
-   cartID: "12345",
-   currency: "USD",
-   cartDescription: "Flowers",
-   merchantCountryCode: "ae",
-   merchantName: "Flowers Store",
-   amount: 20,
-   screenTitle:"Pay with Card",
-   billingDetails: billingDetails
- }
-
-
-startCardPayment(){
-    this.paytabs.startCardPayment(this.configuration)
-               .then(result => console.log(result))
-               .catch(error => console.error(error));
-}
-
-startApplePayPayment(){
-    this.paytabs.startApplePayPayment(this.configuration)
-               .then(result => console.log(result))
-               .catch(error => console.error(error));
-}
-
-startAlternativePaymentMethod(){
- this.paytabs.startAlternativePaymentMethod(this.configuration)
-               .then(result => console.log(result))
-               .catch(error => console.error(error));
-}
-   
-
-
 }

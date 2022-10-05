@@ -26,7 +26,19 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./menu/search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./menu/map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./menu/cart/cart.module').then( m => m.CartPageModule)
+  },  {
+    path: 'historial',
+    loadChildren: () => import('./historial/historial.module').then( m => m.HistorialPageModule)
   }
+
 ];
 
 @NgModule({

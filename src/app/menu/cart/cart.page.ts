@@ -4,6 +4,7 @@ import { CartService } from './cart.service';
 
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { ModalPaymentPage } from "./ModalPaymentPage";
 
 @Component({
   selector: 'app-cart',
@@ -64,12 +65,11 @@ export class CartPage implements OnInit {
     }
   }
 
-  async finalizarCompra(){
+  async finalizarCompra(data){
     const modal = await this.modalCtrl.create({
       component: ModalPaymentPage,
       componentProps: { 
-        qrData: code,
-        flag: bFlag
+        data: data
       }
     });
   }

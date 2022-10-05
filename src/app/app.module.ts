@@ -20,11 +20,23 @@ import { ModalProduct } from './menu/search/modal.product';
 
 import { SwiperModule } from 'swiper/angular';
 
+import { ComponentsModule } from "./components/menu/components.module";
+
+import { LottieSplashScreen } from '@awesome-cordova-plugins/lottie-splash-screen/ngx';
+
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+import { AngularFireModule } from '@angular/fire/compat';
+
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule],
-  providers: [ProductService, BarcodeScanner, Geolocation, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [ComponentsModule, HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule,
+  AngularFireModule.initializeApp(environment.firebaseConfig),
+  AngularFireAuthModule
+  ],
+  providers: [ LottieSplashScreen, ProductService, BarcodeScanner, Geolocation, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

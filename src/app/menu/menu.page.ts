@@ -16,7 +16,12 @@ export class MenuPage implements OnInit {
 
   public element: HTMLElement
 
-  constructor( public cartService: CartService , public swiperModule: SwiperModule, private menu: MenuController) { }
+  constructor( 
+    public cartService: CartService , 
+    public swiperModule: SwiperModule, 
+    private menu: MenuController,
+    private menuController: MenuController
+    ) { }
 
   ngOnInit() {
     this.element = document.getElementById('cartBadge');
@@ -38,5 +43,7 @@ export class MenuPage implements OnInit {
     await this.menu.open('first');
   }
   
-
+  toggleMenu(){
+    this.menuController.toggle();
+  }
 }

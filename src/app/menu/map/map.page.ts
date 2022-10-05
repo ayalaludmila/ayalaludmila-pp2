@@ -46,21 +46,21 @@ export class MapPage implements OnInit {
     const map = document.getElementById('map');
     switch (e.detail.value) {
       case 'mapa1':
-          mapaTitle.innerHTML = 'Mapa 1'; 
+          mapaTitle.innerHTML = 'Sucursal 1'; 
           element.setAttribute('src', '../../assets/icon/mapa1.jpg');
           element.setAttribute('usemap', '#map1');
           map.setAttribute('name', 'map1');
         break;
       
       case 'mapa2':
-          mapaTitle.innerHTML = 'Mapa 2'; 
+          mapaTitle.innerHTML = 'Sucursal 2'; 
           element.setAttribute('src', '../../assets/icon/mapa2.jpg');
           element.setAttribute('usemap', '#map2');
           map.setAttribute('name', 'map2');
           break;
 
       case 'mapa3':
-          mapaTitle.innerHTML = 'Mapa 3'; 
+          mapaTitle.innerHTML = 'Sucursal 3'; 
           element.setAttribute('src', '../../assets/icon/mapa3.jpg');
           element.setAttribute('usemap', '#map3');
           map.setAttribute('name', 'map3');
@@ -75,7 +75,6 @@ export class MapPage implements OnInit {
   showProduct(p, e){
     const productoSeleccionado = "Producto " + p;
     console.log(productoSeleccionado);
-    //this.presentPopover(e, productoSeleccionado);
     this.openModal(productoSeleccionado);
   }
 
