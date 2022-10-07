@@ -1,4 +1,4 @@
-ion-img{
+img{
   min-height: 70px;
   min-width: 70px;
   max-height: 300px;
@@ -34,4 +34,8 @@ ion-img{
 
 ion-content {
   --background: linear-gradient(180deg, rgba(14,116,144,1) 38%, rgba(158,210,198,1) 78%);
+}
+
+.swiper-home{
+  height: 70%;
 }

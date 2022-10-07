@@ -34,9 +34,14 @@ const routes: Routes = [
   {
     path: 'cart',
     loadChildren: () => import('./menu/cart/cart.module').then( m => m.CartPageModule)
-  },  {
-    path: 'historial',
-    loadChildren: () => import('./historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   }
 
 ];

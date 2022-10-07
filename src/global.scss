@@ -60,3 +60,19 @@ ion-modal ion-toolbar {
   --color: white;
 }
 
+ion-toast.custom-toast {
+  --background: #F4F4FA;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ff0000;
+   --border: 2px solid #ff0000;
+}
+    
+ion-toast.custom-toast::part(message) {
+  font-style: italic;
+}
+
+ion-toast.custom-toast::part(button) {
+  border-left: 1px solid #ff0000;
+  color: #ff0000;
+  font-size: 15px;
+}

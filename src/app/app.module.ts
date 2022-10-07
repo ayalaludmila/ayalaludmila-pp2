@@ -30,6 +30,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { environment } from 'src/environments/environment';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [ComponentsModule, HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule,
