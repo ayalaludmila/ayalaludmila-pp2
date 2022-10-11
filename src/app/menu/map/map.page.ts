@@ -6,6 +6,8 @@ import { ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalProductMap } from './modal.product.map';
 
+import imageMapResize from 'image-map-resizer';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -26,18 +28,22 @@ export class MapPage implements OnInit {
     this.geolocationNative();
   }
 
+  ionViewDidLoad() {
+    imageMapResize();
+  }
+
 
   geolocationNative(){
-    this.geolocation.getCurrentPosition().then((geoposition: GeolocationPosition) =>{
-      console.log(geoposition);
-      let watch = this.geolocation.watchPosition();
-      watch.subscribe((data) => {
+    //this.geolocation.getCurrentPosition().then((geoposition: GeolocationPosition) =>{
+     // console.log(geoposition);
+     // let watch = this.geolocation.watchPosition();
+    //  watch.subscribe((data) => {
       // data can be a set of coordinates, or an error (if an error occurred).
       //data.coords.latitude;
       // data.coords.longitude;
        //console.log(data);
-      });
-    })
+     // });
+   // })
   }
 
   handleChange(e){
@@ -49,6 +55,7 @@ export class MapPage implements OnInit {
           mapaTitle.innerHTML = 'Sucursal 1'; 
           element.setAttribute('src', '../../assets/icon/mapa1.jpg');
           element.setAttribute('usemap', '#map1');
+          element.style.display = 'initial';
           map.setAttribute('name', 'map1');
         break;
       
@@ -56,6 +63,7 @@ export class MapPage implements OnInit {
           mapaTitle.innerHTML = 'Sucursal 2'; 
           element.setAttribute('src', '../../assets/icon/mapa2.jpg');
           element.setAttribute('usemap', '#map2');
+          element.style.display = 'initial';
           map.setAttribute('name', 'map2');
           break;
 
@@ -63,6 +71,7 @@ export class MapPage implements OnInit {
           mapaTitle.innerHTML = 'Sucursal 3'; 
           element.setAttribute('src', '../../assets/icon/mapa3.jpg');
           element.setAttribute('usemap', '#map3');
+          element.style.display = 'initial';
           map.setAttribute('name', 'map3');
           break;
 

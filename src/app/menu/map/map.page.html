@@ -17,10 +17,10 @@
       <ion-select-option value="mapa3">Sucursal 3</ion-select-option>
     </ion-select>
   </ion-label>
-  <ion-card>
+  <ion-card class="mapDiv">
     <ion-card-content class=".ion-align-items-center">
       <ion-card-title id="mapa_title">No seleccionado</ion-card-title>
-      <img id="img_mapa" usemap="#map1" src=""> <!-- ../../assets/icon/mapa1.jpg -->
+      <img id="img_mapa" usemap="" src="" style="display: none;">
       <map id="map" name="map1">
         <area title="sector 1" (click)="showProduct('1', $event)" shape="rect" coords="132, 415, 302, 530" />
         <area title="sector 2" (click)="showProduct('2', $event)" shape="rect" coords="203, 280, 438, 407" />
@@ -30,23 +30,3 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="imageMapResizer.min.js"></script>
-<script>$(document).ready(function(e){$("map1").imageMapResize();});</script>
-
-<!-- ../../assets/icon/mapa1.jpg 
-
-        <area  alt="" title="producto 1" (click)="showProduct('1', $event)" shape="rect" coords="92,0,352,161"       />
-        <area  alt="" title="producto 2" (click)="showProduct('2', $event)"  shape="rect" coords="87,172,350,279"       />
-        <area  alt="" title="producto 3" (click)="showProduct('3', $event)"  shape="rect" coords="185,284,448,402"      />
-        <area  alt="" title="producto 4" (click)="showProduct('4', $event)"  shape="rect" coords="121,400,318,533"      />
-
-
-<script type="text/javascript">
-
-  $('map').imageMapResize();
-
-</script>
-  -->

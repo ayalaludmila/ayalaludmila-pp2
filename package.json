@@ -37,9 +37,11 @@
     "cordova-plugin-purchase": "^11.0.0",
     "cordova-plugin-x-toast": "^2.7.3",
     "firebase": "^9.10.0",
+    "image-map-resizer": "^1.0.10",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.6.0",
     "swiper": "^8.4.2",
+    "terser": "^5.15.1",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

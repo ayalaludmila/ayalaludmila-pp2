@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BarcodeScanner, BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx';
-//import { Toast } from '@awesome-cordova-plugins/toast/ngx';
 import { ProductService } from "../cart/product.service";
 
 import { ToastController } from '@ionic/angular';
@@ -17,6 +16,8 @@ import { ModalProduct } from './modal.product';
 import { Product } from "../cart/product.model";
 import { CartModel } from "../cart/cart-model";
 
+import { ApiService } from "../../api.service";
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
@@ -30,7 +31,8 @@ export class SearchPage implements OnInit {
     public http: HttpClient, 
     public toastController: ToastController, 
     public cartService: CartService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private apiService: ApiService
     ) { }
 
   public barcode_flag = false;
@@ -66,7 +68,17 @@ export class SearchPage implements OnInit {
     {
       const searchbar = document.querySelector('ion-searchbar');
       searchbar.addEventListener('ionInput', this.handleInput);
-
+      const productList = this.apiService.obtenerProductos().subscribe((res:any) => {
+        console.log("SUCCESS ===", res);
+        if (res != null) {
+           this.products2 = res;
+        }else{
+          console.log("retorno de datos nulos");
+        }
+        console.log(res);
+      },(error: any) => {
+        console.log("ERROR ===",error);
+      });
     }
     
   }
