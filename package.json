@@ -24,6 +24,8 @@
     "@awesome-cordova-plugins/geolocation": "^5.44.0",
     "@awesome-cordova-plugins/in-app-purchase-2": "^5.45.0",
     "@awesome-cordova-plugins/lottie-splash-screen": "^5.45.0",
+    "@awesome-cordova-plugins/sqlite": "^5.46.0",
+    "@awesome-cordova-plugins/sqlite-porter": "^5.46.0",
     "@awesome-cordova-plugins/toast": "^5.45.0",
     "@capacitor/android": "3.6.0",
     "@capacitor/app": "1.1.1",
@@ -36,6 +38,7 @@
     "cordova-plugin-lottie-splashscreen": "^0.9.6",
     "cordova-plugin-purchase": "^11.0.0",
     "cordova-plugin-x-toast": "^2.7.3",
+    "cordova-sqlite-storage": "^6.0.0",
     "firebase": "^9.10.0",
     "image-map-resizer": "^1.0.10",
     "phonegap-plugin-barcodescanner": "^8.1.0",
@@ -43,6 +46,7 @@
     "swiper": "^8.4.2",
     "terser": "^5.15.1",
     "tslib": "^2.2.0",
+    "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

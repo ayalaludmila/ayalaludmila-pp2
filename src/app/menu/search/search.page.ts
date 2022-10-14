@@ -70,14 +70,9 @@ export class SearchPage implements OnInit {
       searchbar.addEventListener('ionInput', this.handleInput);
       const productList = this.apiService.obtenerProductos().subscribe((res:any) => {
         console.log("SUCCESS ===", res);
-        if (res != null) {
-           this.products2 = res;
-        }else{
-          console.log("retorno de datos nulos");
-        }
-        console.log(res);
+        console.log(productList);
       },(error: any) => {
-        console.log("ERROR ===",error);
+        console.log("ERROR ===", error);
       });
     }
     
