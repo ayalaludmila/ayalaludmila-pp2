@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-
 import { HttpClientModule } from '@angular/common/http';
 
 import { ProductService } from "./menu/cart/product.service";
@@ -30,9 +28,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { environment } from 'src/environments/environment';
 
-import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
+import { Stripe } from "@ionic-native/stripe/ngx";
 
-import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +37,7 @@ import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
   AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule
   ],
-  providers: [ SQLite, SQLitePorter, LottieSplashScreen, ProductService, BarcodeScanner, Geolocation, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ Stripe, LottieSplashScreen, ProductService, BarcodeScanner, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

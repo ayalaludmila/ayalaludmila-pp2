@@ -1,63 +1,52 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { IAPProduct } from '@awesome-cordova-plugins/in-app-purchase-2';
 
-//import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
-
+import { Stripe } from '@ionic-native/stripe/ngx';
 
 Component({
   selector: 'app-modal-example',
   templateUrl: 'ModalPaymentPage.html',
 })
 
-const PRODUCT_GEMS_KEY = '1';
-const PRODUCT_PRO_KEY = '2';
-
 export class ModalPaymentPage {
 
- gems = 0;
- isPRO = false;
- products: IAPProduct[] = [];
+  CLIENT_ID= 'id-A0EF-3dc427bc-da75-4de1-b913-c42e862d4165';
+  CLIENT_SECRET= 'secret-a5d84df3-aef6-4c09-8eb6-f474bea4bfec';
 
-constructor( private ref: ChangeDetectorRef) 
+  public paymentAmount: string;
+  currency: string = 'ARS';
+  currencyIcon: string = '$';
+  stripe_key = 'pk_test_51LwDrRH8uh0NNNotZxF8CTRqqjGWzO5vhLBc9ZNsOlToFrbTtdO4OkT8nHrc5MxMQ32JykMjMaEf2hRaLE4lMvcP00OVfzzkEE';
+  cardDetails: any = {};
+
+
+constructor( private ref: ChangeDetectorRef, private stripe: Stripe) 
 { 
 
-  //this.registerProducts();
-  //this.setupListeners();
 
 }
 
+makePayment(tokenId: string){
 
-
-/* 
-registerProducts(){
-  this.store.register({
-    id: PRODUCT_GEMS_KEY,
-    type: this.store.CONSUMABLE
-  });
-
-  this.store.register({
-    id: PRODUCT_PRO_KEY,
-    type: this.store.NON_CONSUMABLE
-  });
-
-  this.store.refresh();
 }
 
-setupListeners(){
-  this.store.when('product').approved((p: IAPProduct) => {
-    if (p.id === PRODUCT_PRO_KEY) {
-      this.isPRO = true;
-    }else if (p.id === PRODUCT_GEMS_KEY){
-      this.gems+= 100;
-    }
+payWithStripe(){
+    
+  this.stripe.setPublishableKey(this.stripe_key);
 
-    this.ref.detectChanges();
+  this.cardDetails = {
+    number: '4242424242424242',
+    expMonth: 12,
+    expYear: 2025,
+    cvc: '220'
+  }
 
-    return p.verify();
+  this.stripe.createCardToken(this.cardDetails)
+  .then(token => {
+    console.log(token);
+    this.makePayment(token.id);
   })
-  .verified((p: IAPProduct) => p.finish());
+  .catch(error => console.error(error));
 
-  this.store.when
 }
-*/
+
 }

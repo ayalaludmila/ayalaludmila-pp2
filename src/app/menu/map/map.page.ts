@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-
 import { ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalProductMap } from './modal.product.map';
@@ -25,25 +23,11 @@ export class MapPage implements OnInit {
   }
 
   ngAfterViewInit(){
-    this.geolocationNative();
+  
   }
 
   ionViewDidLoad() {
     imageMapResize();
-  }
-
-
-  geolocationNative(){
-    //this.geolocation.getCurrentPosition().then((geoposition: GeolocationPosition) =>{
-     // console.log(geoposition);
-     // let watch = this.geolocation.watchPosition();
-    //  watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      //data.coords.latitude;
-      // data.coords.longitude;
-       //console.log(data);
-     // });
-   // })
   }
 
   handleChange(e){

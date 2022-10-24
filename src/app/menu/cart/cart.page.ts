@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Animation, AnimationController } from '@ionic/angular';
 import { CartService } from './cart.service';
 
 import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { ModalPaymentPage } from "./ModalPaymentPage";
+
 
 @Component({
   selector: 'app-cart',
@@ -13,15 +13,18 @@ import { ModalPaymentPage } from "./ModalPaymentPage";
 })
 export class CartPage implements OnInit {
 
+
+
   @Input() producto: string
 
   products = []
 
   public element: HTMLElement
 
+
+
   constructor( 
     private cartService: CartService, 
-    private animationCtrl: AnimationController, 
     private router: Router,
     public modalCtrl: ModalController
     ) { 
@@ -65,12 +68,25 @@ export class CartPage implements OnInit {
     }
   }
 
-  async finalizarCompra(data){
-    const modal = await this.modalCtrl.create({
-      component: ModalPaymentPage,
-      componentProps: { 
-        data: data
-      }
-    });
+  makePayment(tokenId: string){
+
   }
+
+  async finalizarCompra(){
+    console.log('finalizar');
+    const precio = document.getElementById("total").innerHTML;
+    const modal = await this.modalCtrl.create({
+      component: ModalPaymentPage
+      /*,
+      componentProps: { 
+        paymentAmount: precio
+      }
+      */
+    });
+
+    modal.present();
+    
+    const { data, role } = await modal.onWillDismiss();
+  }
+
 }
