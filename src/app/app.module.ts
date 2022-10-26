@@ -30,6 +30,8 @@ import { environment } from 'src/environments/environment';
 
 import { Stripe } from "@ionic-native/stripe/ngx";
 
+import { ModalPaymentPage } from "./menu/cart/ModalPaymentPage";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +39,7 @@ import { Stripe } from "@ionic-native/stripe/ngx";
   AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule
   ],
-  providers: [ Stripe, LottieSplashScreen, ProductService, BarcodeScanner, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ ModalPaymentPage, Stripe, LottieSplashScreen, ProductService, BarcodeScanner, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

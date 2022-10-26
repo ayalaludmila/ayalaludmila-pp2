@@ -76,12 +76,10 @@ export class CartPage implements OnInit {
     console.log('finalizar');
     const precio = document.getElementById("total").innerHTML;
     const modal = await this.modalCtrl.create({
-      component: ModalPaymentPage
-      /*,
+      component: ModalPaymentPage,
       componentProps: { 
         paymentAmount: precio
       }
-      */
     });
 
     modal.present();

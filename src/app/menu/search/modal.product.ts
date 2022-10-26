@@ -9,6 +9,7 @@ import { BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx'
 @Component({
   selector: 'app-modal-example',
   templateUrl: 'modal.product.html',
+  styleUrls: ['modal.product.scss']
 })
 export class ModalProduct {
     

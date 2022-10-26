@@ -6,12 +6,15 @@
       <ion-title>
         Stripe for PWA
       </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cancel()">X</ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
-  <ion-content>
+  <ion-content id="modal" class="ion-padding">
     <ion-grid text-center>
-      <ion-row>
+      <ion-row class="ion-align-items-center">
         <ion-col>
           Use this Pay button in your PWA's payment page with the attached logic.
         </ion-col>

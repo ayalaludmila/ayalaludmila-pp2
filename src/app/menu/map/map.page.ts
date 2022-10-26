@@ -17,7 +17,7 @@ export class MapPage implements OnInit {
 
   isOpen = false;
 
-  constructor(public geolocation: Geolocation, public modalCtrl: ModalController) { }
+  constructor( public modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
