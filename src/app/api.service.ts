@@ -21,7 +21,7 @@ export class ApiService {
   }
 
   obtenerProductos(){
-    return this.http.get('http://localhost/pp2_crud/leerProducto.php');
+     return this.http.get('http://localhost/pp2_crud/leerProducto.php')
   }
 
 }
