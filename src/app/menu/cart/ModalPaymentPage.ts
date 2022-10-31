@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-
-import { Stripe } from '@ionic-native/stripe/ngx';
-import { ModalController } from '@ionic/angular';
+declare var Stripe;
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { CartService } from "./cart.service";
 
 @Component({
   selector: 'app-modal-example',
@@ -11,48 +11,93 @@ import { ModalController } from '@ionic/angular';
 
 export class ModalPaymentPage {
 
-  CLIENT_ID= 'id-A0EF-3dc427bc-da75-4de1-b913-c42e862d4165';
-  CLIENT_SECRET= 'secret-a5d84df3-aef6-4c09-8eb6-f474bea4bfec';
+  card: any;
 
-  public paymentAmount: string = '0';
-  currency: string = 'ARS';
-  currencyIcon: string = '$';
-  stripe_key = 'pk_test_51LwDrRH8uh0NNNotZxF8CTRqqjGWzO5vhLBc9ZNsOlToFrbTtdO4OkT8nHrc5MxMQ32JykMjMaEf2hRaLE4lMvcP00OVfzzkEE';
-  cardDetails: any = {};
+  stripe = Stripe('pk_test_51LwDrRH8uh0NNNotZxF8CTRqqjGWzO5vhLBc9ZNsOlToFrbTtdO4OkT8nHrc5MxMQ32JykMjMaEf2hRaLE4lMvcP00OVfzzkEE');
 
+  toast: any;
 
-constructor( private ref: ChangeDetectorRef, private stripe: Stripe, private modalCtrl: ModalController) 
+constructor( public cartService: CartService, private alertCtrl: AlertController, private ref: ChangeDetectorRef, private modalCtrl: ModalController, private toastController: ToastController) 
 { 
 
 
+}
+
+ngOnInit() {
+  this.setupStripe();
+  document.getElementsByTagName('ion-modal').item(0).setAttribute('id', 'modalStripe');
 }
 
 makePayment(tokenId: string){
 
 }
 
-payWithStripe(){
-    
-  this.stripe.setPublishableKey(this.stripe_key);
-
-  this.cardDetails = {
-    number: '4242424242424242',
-    expMonth: 12,
-    expYear: 2025,
-    cvc: '220'
-  }
-
-  this.stripe.createCardToken(this.cardDetails)
-  .then(token => {
-    console.log(token);
-    this.makePayment(token.id);
-  })
-  .catch(error => console.error(error));
-
-}
 
 cancel() {
   return this.modalCtrl.dismiss(null, 'cancel');
+}
+
+async setupStripe() {
+  let elements = this.stripe.elements();
+  var style = {
+    base: {
+      color: '#32325d',
+      lineHeight: '24px',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: 'antialiased',
+      fontSize: '16px',
+      '::placeholder': {
+        color: '#aab7c4'
+      }
+    },
+    invalid: {
+      color: '#fa755a',
+      iconColor: '#fa755a'
+    }
+  };
+
+  this.card = elements.create('card', { style: style });
+  console.log(this.card);
+  this.card.mount('#card-element');
+
+  this.card.addEventListener('change', event => {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
+
+  var form = document.getElementById('payment-form');
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    console.log(event)
+
+    this.stripe.createSource(this.card).then(result => {
+      if (result.error) {
+        var errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+      } else {
+        console.log(result);
+        this.showAlert();
+        this.modalCtrl.dismiss(null, 'cancel');
+        this.cartService.finalizarCompra();
+      }
+    });
+  });
+}
+
+async showAlert(){
+  this.toast = await this.toastController.create({
+    message: 'Pago realizado correctamente',
+    duration:  2500, 
+    position: 'bottom',
+    color: 'success'
+  });
+
+  this.toast.present()
+
 }
 
 }

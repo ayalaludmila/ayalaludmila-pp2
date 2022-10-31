@@ -3,19 +3,31 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registra una nueva cuenta</ion-title>
+    <ion-title>Registrar una cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-  <ion-card-content>
-  <ion-input required type="text" placeholder="Write your mail" #email></ion-input>
-  <ion-input required type="password" placeholder="Password" #password></ion-input>
-  <!--<ion-input required type="password" placeholder="Repetir Password" #password2></ion-input>-->
-  <ion-button color="primary" (click)="onRegister(email, password)">
-    Registrarse
-  </ion-button>
-</ion-card-content>
+  <ion-grid fixed class="ion-align-items-center">
+    <ion-row>
+      <form>
+      <ion-card>
+      <ion-col size="6">
+        
+        <ion-card-content horizontal="center">
+          <ion-input required type="text" placeholder="Write your mail" #email></ion-input>
+          <ion-input required type="password" placeholder="Password" #password></ion-input>
+          
+        </ion-card-content>
+      </ion-col>
+      <ion-col>
+        <ion-button horizontal="center" color="primary" (click)="onRegister(email, password)">
+          Registrarse
+        </ion-button>
+      </ion-col>
+      </ion-card>
+      </form>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

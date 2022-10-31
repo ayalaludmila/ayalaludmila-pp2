@@ -20,6 +20,7 @@ export class MapPage implements OnInit {
   constructor( public modalCtrl: ModalController) { }
 
   ngOnInit() {
+    
   }
 
   ngAfterViewInit(){

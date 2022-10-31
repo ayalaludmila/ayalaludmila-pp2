@@ -3,10 +3,7 @@
   border-style: solid;
 }
 
-ion-modal {
-  --min-height: 70%;
-  --max-height: 80%;
-}
+
 
 ion-modal ion-list{
   height: 100%;  
@@ -20,4 +17,11 @@ ion-modal::part(backdrop) {
 ion-modal ion-toolbar {
   --background: rgb(14 116 144);
   --color: white;
+}
+
+#modalStripe{
+  all: initial;
+  all: unset;
+  --min-height: 70%;
+  --max-height: 80%;
 }

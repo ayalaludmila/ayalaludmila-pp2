@@ -10,15 +10,15 @@
 <ion-content>
 
   <ion-list *ngIf="products.length > 0; else noProducts" >
-    <ion-item *ngFor="let product of products" [id]="product.id" > 
+    <ion-item *ngFor="let product of products" [id]="product.id_producto" > 
       <ion-grid>
         <ion-row>
           <ion-col size="2">
-            <ion-img [src]="product.imageURL"></ion-img>
+            <ion-img [src]="product.img_producto"></ion-img>
           </ion-col>
           <ion-col size="2">
             <ion-label>
-              {{product.title}}
+              {{product.descripcion}}
             </ion-label>
           </ion-col>
 
@@ -30,16 +30,16 @@
 
           <ion-col>
             <ion-label>
-            {{product.price * product.amount | currency:'USD' }}
+            {{product.precio * product.amount | currency:'USD' }}
           </ion-label>
           </ion-col>
         </ion-row>
       </ion-grid>
       
-      <ion-button color="secondary" (click)="addAmount(product.id)">
+      <ion-button color="secondary" (click)="addAmount(product.id_producto)">
         <ion-icon name="add"></ion-icon>
       </ion-button>
-      <ion-button color="danger" (click)="deleteProduct(product.id)"> <!-- deleteProduct(product.id) -->
+      <ion-button color="danger" (click)="deleteProduct(product.id_producto)"> <!-- deleteProduct(product.id) -->
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>

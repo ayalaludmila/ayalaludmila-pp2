@@ -26,17 +26,17 @@
   </ion-fab>
 
   <ion-list>
-    <ion-item *ngFor="let product of products2" [id]="product.id" >
+    <ion-item *ngFor="let product of products2" [id]="product.id_producto" >
       <ion-avatar slot="start">
-        <ion-img [src]="product.imageURL"></ion-img>
+        <ion-img [src]="product.img_producto"></ion-img>
       </ion-avatar>
-      <ion-label id="product.id">
-        {{product.title}}
+      <ion-label id="product.id_producto">
+        {{product.descripcion}}
       </ion-label>
       <ion-label>
-        {{product.price | currency:'USD' }}
+        {{product.precio | currency:'USD' }}
       </ion-label>
-      <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(product)"> <!-- (click)="addToCart(product.id)"  sendProduct(product.id) -->
+      <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(product)">
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </ion-item>

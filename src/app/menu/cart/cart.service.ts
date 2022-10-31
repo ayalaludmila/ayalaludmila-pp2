@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AnimationController } from '@ionic/angular';
 import { CartModel } from "./cart-model";
@@ -10,7 +11,7 @@ export class CartService {
 
   products: CartModel[] = [];
 
-  constructor( private animationCtrl: AnimationController ) { }
+  constructor( private animationCtrl: AnimationController, private router: Router ) { }
 
   deleteProductAnimation(product){
     var element = document.getElementById(product);
@@ -26,7 +27,7 @@ export class CartService {
     
     let added = false;
     for (const p of this.products) {
-      if (p.id === product.id) {
+      if (p.id_producto === product.id_producto) {
         p.amount += product.amount;
         added = true;
         break;
@@ -45,24 +46,24 @@ export class CartService {
   deleteProduct(productId: string) {
     
     const product = this.products.find(product => {
-          return product.id == productId
+          return product.id_producto == productId
         });
     
     if (product.amount > 1) {
-      const index = this.products.findIndex((obj => obj.id == productId));
+      const index = this.products.findIndex((obj => obj.id_producto == productId));
       return this.products[index].amount--;
     }else{
       this.deleteProductAnimation(productId);
       setTimeout(function(){ document.getElementById(productId).remove(); }, 250);
       this.products = this.products.filter(product => {
-      return product.id !== productId});
+      return product.id_producto !== productId});
     }
     return;
   }
 
   addAmount(productId: string){
     this.products.find(product => {
-      return product.id == productId
+      return product.id_producto == productId
     }).amount++;
   }
 
@@ -71,7 +72,7 @@ export class CartService {
     var total = parseInt(totalHTML.innerHTML);
     total = 0;
     for (let index = 0; index < this.products.length; index++) {
-      var precioProducto = this.products[index].price;
+      var precioProducto = this.products[index].precio;
       var cantidad = this.products[index].amount;
       total = total + (precioProducto * cantidad);
     }
@@ -79,6 +80,7 @@ export class CartService {
   }
 
   finalizarCompra(){
-
+    this.products = [];
+    this.router.navigate(['menu']);
   }
 }

@@ -20,12 +20,13 @@ export class ModalProduct {
   constructor(private modalCtrl: ModalController, public searchPage: SearchPage) {}
 
   ngOnInit() {
+    console.log(this.data);
     if (this.flag === true) {
       document.getElementById("product.title").innerText = this.qrData.text;
       document.getElementById("imageURL").setAttribute("src", this.qrData.text);
     }else{
-      document.getElementById("product.title").innerText = this.data.title;
-      document.getElementById("imageURL").setAttribute("src", this.data.imageURL);
+      document.getElementById("product.title").innerText = this.data.descripcion;
+      document.getElementById("imageURL").setAttribute("src", this.data.img_producto);
     }
   }
 

@@ -39,38 +39,21 @@ export class SearchPage implements OnInit {
 
   public items : Array<any> = [];
 
-  products2 = [
-    {
-      id: '1',
-      title: 'producto A',
-      imageURL: 'https://jumboargentina.vteximg.com.br/arquivos/ids/693346-230-230/Madalenas-Rellenas-Ddl-Valente-180g-1-871306.jpg?v=637829769798300000',
-      price: 100
-    },
-    {
-      id: '2',
-      title: 'producto B',
-      imageURL: 'https://jumboargentina.vteximg.com.br/arquivos/ids/640948-230-230/T-Taragui-S-e-Filtro-Diamantado-X-100saq-1-870732.jpg?v=637557379298100000',
-      price: 120
-    },
-    {
-      id: '3',
-      title: 'producto C',
-      imageURL: 'https://jumboargentina.vteximg.com.br/arquivos/ids/673954-230-230/Galletitas-Oreo-182-5g-1-858778.jpg?v=637711293977900000',
-      price: 50
-    }
-  ]
+  products2 : Array<any>
 
   producService = this.productService
 
   firtsLoad = false;
   ngOnInit() {
+    //document.getElementsByTagName('ion-modal').item(0).setAttribute('class', 'ion-modal');
     if (this.firtsLoad === false) 
     {
       const searchbar = document.querySelector('ion-searchbar');
       searchbar.addEventListener('ionInput', this.handleInput);
       const productList = this.apiService.obtenerProductos().subscribe((res:any) => {
         console.log("SUCCESS ===", res);
-        console.log(productList);
+        this.products2 = res;
+        console.log(this.products2);
       },(error: any) => {
         console.log("ERROR ===", error);
       });
