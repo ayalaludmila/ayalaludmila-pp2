@@ -36,6 +36,7 @@
     "cordova-plugin-stripe": "^1.5.3",
     "cordova-plugin-x-toast": "^2.7.3",
     "image-map-resizer": "^1.0.10",
+    "jetifier": "^2.0.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.6.0",
     "swiper": "^8.4.2",
