@@ -29,7 +29,7 @@ export class ApiService {
   }
 
   agregarProductos(data){
-    return this.http.post('http://localhost/pp2_crud/crearProducto.php',data);// https://2000-186-124-61-158.sa.ngrok.io
+    return this.http.post('http://localhost/pp2_crud/crearProducto.php',data);// 
     //return this.http.post('https://16c1-186-124-61-158.sa.ngrok.io/pp2_crud/crearProducto.php',data);
     
   }

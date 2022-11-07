@@ -32,10 +32,13 @@ import { Stripe } from "@ionic-native/stripe/ngx";
 
 import { ModalPaymentPage } from "./menu/cart/ModalPaymentPage";
 
+import { CommonModule } from '@angular/common';
+
+import { ModalProductMap } from "./menu/map/modal.product.map";
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [ComponentsModule, HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule,
+  declarations: [AppComponent, ModalProductMap],
+  imports: [ComponentsModule, HttpClientModule, BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule,
   AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule
   ],

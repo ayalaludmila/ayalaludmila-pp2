@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>historial</ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/menu"></ion-back-button>
+  </ion-buttons>
+    <ion-title>Historial de compras</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-list>
+    <ion-item *ngFor="let compra of historial" [id]="compra.id" >
+      <ion-label id="compra.id">
+        {{compra.descripcion}}
+      </ion-label>
+      <ion-label>
+        {{compra.precio | currency:'USD' }}
+      </ion-label>
+      <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(compra.id)">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  
 </ion-content>

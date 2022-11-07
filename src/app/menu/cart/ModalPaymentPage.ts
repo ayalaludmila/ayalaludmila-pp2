@@ -25,7 +25,10 @@ constructor( public cartService: CartService, private alertCtrl: AlertController
 
 ngOnInit() {
   this.setupStripe();
-  document.getElementsByTagName('ion-modal').item(0).setAttribute('id', 'modalStripe');
+  //document.getElementsByTagName('ion-modal').item(0).setAttribute('id', 'modalStripe');
+  const modal = document.getElementsByTagName('ion-modal').item(0);
+  modal.setAttribute('style', '--min-height: 65%');
+  modal.setAttribute('style', '--max-height: 75%');
 }
 
 makePayment(tokenId: string){

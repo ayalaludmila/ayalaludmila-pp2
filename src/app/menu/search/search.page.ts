@@ -71,7 +71,7 @@ export class SearchPage implements OnInit {
 
  { id_producto: '15', descripcion: 'Yogurisimo Fort Vain Sachet 1000Gr', precio: '365.00', categoria: '11', img_producto: 'https://diaio.vtexassets.com/arquivos/ids/232115-500-auto?v=1753577255&width=500&height=auto&aspect=true', codigo_barra: '7456001388789'},
 
- { id_producto: '35', descripcion: 'Chicle Topline Strawberry 14 Gr.', precio: '130.00', categoria: '1', img_producto: 'https://diaio.vtexassets.com/arquivos/ids/232115-500-auto?v=1753577255&width=500&height=auto&aspect=true', codigo_barra: '7790580120573'},
+ { id_producto: '35', descripcion: 'Chicle Topline Strawberry 14 Gr.', precio: '130.00', categoria: '1', img_producto: 'https://diaio.vtexassets.com/arquivos/ids/225955-500-auto?v=1753338304&width=500&height=auto&aspect=true', codigo_barra: '7790580120573'},
 
  { id_producto: '36', descripcion: 'Desodorante Antibacterial Rexona Men 150 Ml.', precio: '475.00 ', categoria: '1', img_producto: 'https://diaio.vtexassets.com/arquivos/ids/228655-500-auto?v=1753820258&width=500&height=auto&aspect=true', codigo_barra: '7791293045078'},
  ];
@@ -80,7 +80,6 @@ export class SearchPage implements OnInit {
 
   firtsLoad = false;
   ngOnInit() {
-    //document.getElementsByTagName('ion-modal').item(0).setAttribute('class', 'ion-modal');
     if (this.firtsLoad === false) 
     {
       const searchbar = document.querySelector('ion-searchbar');
@@ -111,11 +110,14 @@ export class SearchPage implements OnInit {
 
   leerCodigoBarra(){
     this.barcodeScanner.scan().then(barcodeData => {
-      this.barcode_flag = true
-      this.searchProduct(barcodeData, this.barcode_flag)
-
+      if (barcodeData != undefined) {
+        this.barcode_flag = true
+        this.searchProduct(barcodeData, this.barcode_flag)
+      }
      }).catch(err => {
          console.log('Error', err);
+         //this.barcode_flag = true
+         //this.searchProduct('7791293045078', this.barcode_flag)
      });
   }
 
@@ -157,10 +159,8 @@ export class SearchPage implements OnInit {
     }
   }
 
-  async searchProduct(code: BarcodeScanResult , bFlag: boolean) {
-    //buscariamos producto en base de datos 
-    console.log(code);
-    
+  async searchProduct(code, bFlag: boolean) { 
+
     const modal = await this.modalCtrl.create({
       component: ModalProduct,
       componentProps: { 
@@ -168,5 +168,8 @@ export class SearchPage implements OnInit {
         flag: bFlag
       }
     });
+
+    modal.present();
   }  
+
 }
