@@ -83,4 +83,7 @@ export class CartService {
     this.products = [];
     this.router.navigate(['menu']);
   }
+  finalizarSesion(){
+    this.products = [];
+  }
 }

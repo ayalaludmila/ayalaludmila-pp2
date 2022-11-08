@@ -3,10 +3,9 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { SearchPage } from './search.page';
 
-import { CartModel } from '../cart/cart-model';
 import { BarcodeScanResult } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { ApiService } from 'src/app/api.service';
-import { Product } from '../cart/product.model';
+import { CartModel } from '../cart/cart-model';
 
 
 @Component({
@@ -16,7 +15,7 @@ import { Product } from '../cart/product.model';
 })
 export class ModalProduct {
     
-  public data : any;
+  public data : CartModel;
   public qrData: BarcodeScanResult;
   public flag : boolean;
   public datas : Array<any> =
@@ -59,13 +58,10 @@ export class ModalProduct {
   constructor(private modalCtrl: ModalController, public searchPage: SearchPage, private apiServide: ApiService) {}
 
   ngOnInit() {
-    console.log(this.qrData);
-    console.log(this.flag);
     
     if (this.flag === true) {
       this.buscarQR();
       this.filtrarProducto(this.datas);
-      console.log(this.data);
       document.getElementById("product.title").innerText = this.data.descripcion;
       document.getElementById("imageURL").setAttribute("src", this.data.img_producto);
     }else{
@@ -105,12 +101,10 @@ export class ModalProduct {
       this.datas = res;
     },(error: any) => {
       console.log("ERROR ===", error);
-      this.data.descripcion = 'error de conexion';
     });
   }
 
   filtrarProducto(productos: Array<any>){
-    //productos = this.datas;
     for (let index = 0; index < productos.length; index++) {
       if (productos[index].codigo_barra === this.qrData.toString() ) {
         this.data = productos[index];

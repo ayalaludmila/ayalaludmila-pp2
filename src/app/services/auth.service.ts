@@ -72,6 +72,7 @@ export class AuthService {
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();
+      this.msgCerrarSesion();
     } catch (error) {
       console.log('Error ->', error)
     }
@@ -117,14 +118,13 @@ export class AuthService {
 
     await toast.present();
   }
-}
 
-/*
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if request.auth != true;
-    }
+  async msgCerrarSesion(){
+    const mensaje = await this.toastController.create({
+      message: 'Sesion cerrada.',
+      duration:  1000, 
+      position: 'bottom'
+    });
+    mensaje.present();
   }
 }
-*/

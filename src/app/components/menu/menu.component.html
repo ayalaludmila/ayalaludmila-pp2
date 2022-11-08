@@ -1,6 +1,9 @@
 <ion-menu side="start" menuId="first" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
+      <ion-avatar *ngIf="flag === true" slot="start">
+        <ion-img [src]=""></ion-img>
+      </ion-avatar>
       <ion-title>Menu Principal</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -25,7 +28,7 @@
         <ion-label>Historial</ion-label>
       </ion-item>
 
-      <ion-item routerLink="/home">
+      <ion-item (click)="deslogear()" routerLink="/home">
         <ion-icon slot="start" name="exit"></ion-icon>
         <ion-label>Salir</ion-label>
       </ion-item>

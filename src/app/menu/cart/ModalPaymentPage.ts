@@ -86,6 +86,7 @@ async setupStripe() {
         this.showAlert();
         this.modalCtrl.dismiss(null, 'cancel');
         this.cartService.finalizarCompra();
+        //this.cartService.finalizarCompra();
       }
     });
   });

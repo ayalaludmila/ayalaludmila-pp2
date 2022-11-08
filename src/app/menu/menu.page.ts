@@ -4,6 +4,9 @@ import { CartService } from "./cart/cart.service";
 
 import { SwiperModule } from 'swiper/angular';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
+
+import { take, map } from "rxjs/operators";
 
 @Component({
   selector: 'app-menu',
@@ -19,7 +22,8 @@ export class MenuPage implements OnInit {
   constructor( 
     public cartService: CartService , 
     public swiperModule: SwiperModule, 
-    private menu: MenuController
+    private menu: MenuController,
+    private authServ: AuthService
     ) { }
 
   ngOnInit() {
@@ -27,6 +31,7 @@ export class MenuPage implements OnInit {
   }
 
   ionViewWillEnter() {
+
     var total = 0;
     
     for (const p of this.cartService.products) {

@@ -82,7 +82,6 @@ export class CartPage implements OnInit {
   }
 
   async finalizarCompra(){
-    console.log('finalizar');
     const precio = document.getElementById("total").innerHTML;
     const modal = await this.modalCtrl.create({
       component: ModalPaymentPage,

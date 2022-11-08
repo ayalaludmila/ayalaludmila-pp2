@@ -39,6 +39,8 @@ export class SearchPage implements OnInit {
 
   public items : Array<any> = [];
 
+  public barcode : string; 
+
   products2 : Array<any> =
   [
  {id_producto: '1', descripcion: 'Aceite de girasol Natura 1.5L', precio: '320.00', categoria: '1', img_producto: 'https://ardiaprod.vtexassets.com/arquivos/ids/197858-500-auto?v=637559816874500000&width=500&height=auto&aspect=true', codigo_barra: '1234843578941'},
@@ -87,7 +89,6 @@ export class SearchPage implements OnInit {
       const productList = this.apiService.obtenerProductos().subscribe((res:any) => {
         console.log("SUCCESS ===", res);
         this.products2 = res;
-        console.log(this.products2);
       },(error: any) => {
         console.log("ERROR ===", error);
       });
@@ -111,13 +112,14 @@ export class SearchPage implements OnInit {
   leerCodigoBarra(){
     this.barcodeScanner.scan().then(barcodeData => {
       if (barcodeData != undefined) {
+        //alert('Codigo: ' + barcodeData.text);
         this.barcode_flag = true
-        this.searchProduct(barcodeData, this.barcode_flag)
+        this.barcode = barcodeData.text;
+        //this.searchProduct(barcodeData.text, this.barcode_flag)
+        this.openModal(this.products2[0] ,this.barcode, this.barcode_flag);
       }
      }).catch(err => {
-         console.log('Error', err);
-         //this.barcode_flag = true
-         //this.searchProduct('7791293045078', this.barcode_flag)
+        alert('Error: ' + err);
      });
   }
 
@@ -142,13 +144,27 @@ export class SearchPage implements OnInit {
     
   }
 
-  async openModal(product: Product) {
-    const modal = await this.modalCtrl.create({
-      component: ModalProduct,
-      componentProps: { 
-        data: product
+  async openModal(product: Product, code: string, QRFlag: boolean) {
+    var modal : any = [];
+    if (QRFlag) {
+       modal = await this.modalCtrl.create({
+        component: ModalProduct,
+        componentProps: { 
+          qrData: code,
+          flag: QRFlag
+        }
+      });
+
+    }else{
+      modal = await this.modalCtrl.create({
+        component: ModalProduct,
+        componentProps: { 
+          data: product
       }
     });
+
+    }
+    
     
     modal.present();
     
@@ -158,9 +174,9 @@ export class SearchPage implements OnInit {
       this.addToCart(data);
     }
   }
-
-  async searchProduct(code, bFlag: boolean) { 
-
+/*
+  async searchProduct(code: string, bFlag: boolean) { 
+    
     const modal = await this.modalCtrl.create({
       component: ModalProduct,
       componentProps: { 
@@ -171,5 +187,5 @@ export class SearchPage implements OnInit {
 
     modal.present();
   }  
-
+*/
 }
