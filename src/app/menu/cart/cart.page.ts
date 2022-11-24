@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { ModalPaymentPage } from "./ModalPaymentPage";
 import { Stripe } from '@ionic-native/stripe/ngx';
+import { ApiService } from 'src/app/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -29,13 +31,16 @@ export class CartPage implements OnInit {
 
   public element: HTMLElement
 
+  public uid: string;
 
 
   constructor( 
     private cartService: CartService, 
     private router: Router,
     public modalCtrl: ModalController,
-    private stripe: Stripe
+    private stripe: Stripe,
+    private apiService: ApiService,
+    private authService: AuthService
     ) { 
     
    }
@@ -43,12 +48,23 @@ export class CartPage implements OnInit {
   ngOnInit() {
     this.products = this.cartService.getProducts();
     this.cartService.updateTotal();
+    this.checkUser();
   }
 
   ionViewWillEnter() {
     this.products = this.cartService.getProducts();
     this.cartService.updateTotal();
     this.addFinishButton();
+    this.checkUser();
+  }
+
+  checkUser(){
+    if (this.authService.usuario != null) {
+      this.uid = this.authService.usuario.uid;
+    }else{
+      this.uid = 'false';
+    }
+    console.log(this.uid);
   }
 
   deleteProduct(product) {
@@ -90,8 +106,6 @@ export class CartPage implements OnInit {
       }
     });
 
-  
-    
       this.stripe.setPublishableKey(this.stripe_key);
     
       this.cardDetails = {
@@ -112,6 +126,35 @@ export class CartPage implements OnInit {
     
     modal.present();
     const { data, role } = await modal.onWillDismiss();
+      console.log(role);
+    if(role != 'cancel'){
+      const datas = {
+        uid : this.uid,
+        productos : JSON.stringify(this.products)
+      };
+      var jsonData = JSON.parse(datas.productos);
+      if (this.uid != 'false') {
+        this.filtrarDatosProductos(jsonData);
+        datas.productos = JSON.stringify(jsonData);
+        this.apiService.guardarCompra(datas).subscribe((res:any) => {
+        console.log("SUCCESS ===", res);
+      },(error: any) => {
+        console.log("ERROR ===", error);
+      });
+      }
+      
+      this.cartService.finalizarCompra();
+    }else{
+      console.log('compra no guardada, usuario no logeado');
+    }
+  }
+
+  filtrarDatosProductos(datas){
+    for (let index = 0; index < datas.length; index++) {
+      datas[index].img_producto = "";
+      datas[index].codigo_barra = "";
+      
+    }
   }
 
 }

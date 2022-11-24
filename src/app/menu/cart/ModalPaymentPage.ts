@@ -17,7 +17,11 @@ export class ModalPaymentPage {
 
   toast: any;
 
-constructor( public cartService: CartService, private alertCtrl: AlertController, private ref: ChangeDetectorRef, private modalCtrl: ModalController, private toastController: ToastController) 
+constructor(  
+  private alertCtrl: AlertController, 
+  private ref: ChangeDetectorRef, 
+  private modalCtrl: ModalController, 
+  private toastController: ToastController) 
 { 
 
 
@@ -75,18 +79,14 @@ async setupStripe() {
   var form = document.getElementById('payment-form');
   form.addEventListener('submit', event => {
     event.preventDefault();
-    console.log(event)
 
     this.stripe.createSource(this.card).then(result => {
       if (result.error) {
         var errorElement = document.getElementById('card-errors');
         errorElement.textContent = result.error.message;
       } else {
-        console.log(result);
         this.showAlert();
-        this.modalCtrl.dismiss(null, 'cancel');
-        this.cartService.finalizarCompra();
-        //this.cartService.finalizarCompra();
+        this.modalCtrl.dismiss(null, 'paidout');
       }
     });
   });

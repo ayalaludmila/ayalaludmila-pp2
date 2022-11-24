@@ -22,6 +22,10 @@ export class LoginPage implements OnInit {
     })
   }
 
+  ionViewWillEnter() {
+    document.getElementsByClassName('card-content-md').item(0).setAttribute('style','left: -45px;');
+  }
+
   async onLogin(email, password){
     try {
       if (email.value != "" && password.value != "") {

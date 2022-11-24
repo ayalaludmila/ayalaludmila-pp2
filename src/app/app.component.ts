@@ -20,13 +20,16 @@ export class AppComponent {
     this.initializeApp();
     }
 
-  initializeApp(){
-    this.lottieSplashScreen.show();
-    this.platform.ready().then(() => {
-      setTimeout(() => {
-        this.lottieSplashScreen.hide();
-      }, 2000);
-    })
+  async initializeApp(){
+    await this.platform.ready();
+
+    const lottie = (window as any).lottie;
+
+    if (this.platform.is('android') && lottie) {
+      await this.lottieSplashScreen.hide();
+      await this.lottieSplashScreen.show('../assets/splash.json', false);
+    }
+
   }
 
 }

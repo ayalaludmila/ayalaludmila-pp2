@@ -4,7 +4,7 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>
-        Stripe for PWA
+        Stripe
       </ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="cancel()">X</ion-button>
@@ -16,17 +16,17 @@
     <ion-grid text-center>
       <ion-row class="ion-align-items-center">
         <ion-col>
-          Use this Pay button in your PWA's payment page with the attached logic.
+          Realiza el pago con tarjeta de manera segura y comoda con Stripe
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-card class="welcome-card">
       <ion-img src="/assets/stripe.png"></ion-img>
       <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Stripe Sample</ion-card-title>
+        <ion-card-subtitle>Realiza tu pago con Stripe</ion-card-subtitle>
+        <ion-card-title>Stripe</ion-card-title>
         <ion-row>
-          <ion-col>Total Payment</ion-col>
+          <ion-col>Monto total</ion-col>
           <ion-col> {{currencyIcon}}{{paymentAmount}} </ion-col>
         </ion-row>
       </ion-card-header>
@@ -37,7 +37,7 @@
             <!-- Used to display Element errors -->
             <div id="card-errors" role="alert"></div>
           </div>
-          <ion-button name="btnComprar" type="submit" color="success" expand="full">Make Payment</ion-button>
+          <ion-button name="btnComprar" type="submit" color="success" expand="full">Realizar Pago</ion-button>
         </form>
       </ion-card-content>
     </ion-card>

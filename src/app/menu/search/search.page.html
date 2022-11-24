@@ -25,22 +25,28 @@
     </ion-fab-button>
   </ion-fab>
 
+  
   <ion-list>
+
+   
     <ion-item *ngFor="let product of products2" [id]="product.id_producto" >
       <ion-avatar slot="start">
         <ion-img [src]="product.img_producto"></ion-img>
       </ion-avatar>
-      <ion-label id="product.id_producto">
+      <ion-label class="desc" id="product.id_producto">
         {{product.descripcion}}
       </ion-label>
-      <ion-label>
+      <ion-label class="price">
         {{product.precio | currency:'USD' }}
       </ion-label>
       <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(product)">
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </ion-item>
-  </ion-list>
+
+</ion-list>
+
+
 
 </ion-content>
 

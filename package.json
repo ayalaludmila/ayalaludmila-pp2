@@ -1,6 +1,6 @@
 {
   "name": "easyshop",
-  "version": "0.5.0",
+  "version": "0.9.5",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -36,11 +36,12 @@
     "cordova-plugin-stripe": "^1.5.3",
     "cordova-plugin-x-toast": "^2.7.3",
     "image-map-resizer": "^1.0.10",
+    "ionic-angular": "3.9.10",
     "jetifier": "^2.0.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.6.0",
     "swiper": "^8.4.2",
-    "terser": "^5.15.1",
+    "terser": "~5.15.1",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

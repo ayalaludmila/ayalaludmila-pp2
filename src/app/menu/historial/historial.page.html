@@ -9,18 +9,31 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-list *ngIf="historial.length > 0; else noHistorial" >
     <ion-item *ngFor="let compra of historial" [id]="compra.id" >
-      <ion-label id="compra.id">
-        {{compra.descripcion}}
+      <ion-label id="compra.id_compra">
+        {{compra.fecha}}
       </ion-label>
       <ion-label>
-        {{compra.precio | currency:'USD' }}
+        {{compra.productos | currency:'USD' }}
       </ion-label>
       <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(compra.id)">
         <ion-icon name="search"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
-  
+
+
+<ng-template #noHistorial>
+  <ion-text horizontal="center" vertical="center">
+    <p class="ion-text-center">Aún no haz realizado ninguna compra.</p>
+  </ion-text>
+  <ion-fab  vertical="center" horizontal="center" slot="fixed">
+    <ion-label horizontal="center" style="margin-left: -60px;margin-bottom: 5px;">Ir a los productos!</ion-label>
+    <ion-fab-button id="btnAgregar" color="primary" (click)="goToSearch()">
+      <ion-icon  name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ng-template>
+
 </ion-content>

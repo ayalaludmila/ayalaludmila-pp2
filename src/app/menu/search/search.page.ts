@@ -80,20 +80,24 @@ export class SearchPage implements OnInit {
   
   producService = this.productService
 
-  firtsLoad = false;
+  
   ngOnInit() {
-    if (this.firtsLoad === false) 
-    {
-      const searchbar = document.querySelector('ion-searchbar');
-      searchbar.addEventListener('ionInput', this.handleInput);
-      const productList = this.apiService.obtenerProductos().subscribe((res:any) => {
-        console.log("SUCCESS ===", res);
-        this.products2 = res;
-      },(error: any) => {
-        console.log("ERROR ===", error);
-      });
-    }
-    
+    this.addListenerToSearchbar();
+  }
+
+  ionViewWillEnter() {
+    this.addListenerToSearchbar();
+  }
+
+  addListenerToSearchbar(){
+    const searchbar = document.querySelector('ion-searchbar');
+    searchbar.addEventListener('ionInput', this.handleInput);
+    const productList = this.apiService.obtenerProductos().subscribe((res:any) => {
+      console.log("SUCCESS ===", res);
+      this.products2 = res;
+    },(error: any) => {
+      console.log("ERROR ===", error);
+    });
   }
 
   handleInput(event) {
@@ -112,10 +116,8 @@ export class SearchPage implements OnInit {
   leerCodigoBarra(){
     this.barcodeScanner.scan().then(barcodeData => {
       if (barcodeData != undefined) {
-        //alert('Codigo: ' + barcodeData.text);
         this.barcode_flag = true
         this.barcode = barcodeData.text;
-        //this.searchProduct(barcodeData.text, this.barcode_flag)
         this.openModal(this.products2[0] ,this.barcode, this.barcode_flag);
       }
      }).catch(err => {

@@ -61,10 +61,11 @@ export class MapPage implements OnInit {
 
   ngOnInit() {
     this.buscarProducto();
+    imageMapResize();
   }
 
   ngAfterViewInit(){
-  
+    imageMapResize();
   }
 
   ionViewDidLoad() {
@@ -85,13 +86,13 @@ export class MapPage implements OnInit {
           element.style.display = 'initial';
           map.setAttribute('name', 'map1');
           sector.item(0).setAttribute('shape', 'rect');
-          sector.item(0).setAttribute('coords', '94,27,358,165');
+          sector.item(0).setAttribute('coords', '68, 219, 149, 261');
           sector.item(1).setAttribute('shape', 'rect');
-          sector.item(1).setAttribute('coords', '76,176,342,274');
-          sector.item(2).setAttribute('shape', 'poly');
-          sector.item(2).setAttribute('coords', '189,289,363,286,410,261,444,257,446,430,401,433,347,401,194,398,192,345');
-          sector.item(3).setAttribute('shape', 'poly');
-          sector.item(3).setAttribute('coords', '128,407,125,505,227,503,263,538,306,540,314,428,209,419,171,393');
+          sector.item(1).setAttribute('coords', '99, 143, 222, 207');
+          sector.item(2).setAttribute('shape', 'rect');
+          sector.item(2).setAttribute('coords', '31, 91, 169, 135');
+          sector.item(3).setAttribute('shape', 'rect');
+          sector.item(3).setAttribute('coords', '42, 15, 177, 78');
         break;
       
       case 'mapa2':
@@ -101,13 +102,13 @@ export class MapPage implements OnInit {
           element.style.display = 'initial';
           map.setAttribute('name', 'map2');
           sector.item(0).setAttribute('shape', 'rect');
-          sector.item(0).setAttribute('coords', '70,282,16,59');
+          sector.item(0).setAttribute('coords', '96, 157, 394, 498');
           sector.item(1).setAttribute('shape', 'rect');
-          sector.item(1).setAttribute('coords', '163,261,82,74');
+          sector.item(1).setAttribute('coords', '31, 92, 54, 558');
           sector.item(2).setAttribute('shape', 'rect');
-          sector.item(2).setAttribute('coords', '175,59,231,285');
+          sector.item(2).setAttribute('coords', '427, 105, 459, 555');
           sector.item(3).setAttribute('shape', 'rect');
-          sector.item(3).setAttribute('coords', '38,28,209,51');
+          sector.item(3).setAttribute('coords', '79, 58, 407, 95');
           break;
 
       case 'mapa3':
@@ -117,13 +118,13 @@ export class MapPage implements OnInit {
           element.style.display = 'initial';
           map.setAttribute('name', 'map3');
           sector.item(0).setAttribute('shape', 'rect');
-          sector.item(0).setAttribute('coords', '112,12,535,152');
+          sector.item(0).setAttribute('coords', '14, 106, 41, 461');
           sector.item(1).setAttribute('shape', 'rect');
-          sector.item(1).setAttribute('coords', '509,198,535,588');
+          sector.item(1).setAttribute('coords', '110, 147, 389, 534');
           sector.item(2).setAttribute('shape', 'rect');
-          sector.item(2).setAttribute('coords', '125,163,455,617');
+          sector.item(2).setAttribute('coords', '442, 33, 466, 521');
           sector.item(3).setAttribute('shape', 'rect');
-          sector.item(3).setAttribute('coords', '11,118,106,560');
+          sector.item(3).setAttribute('coords', '99, 11, 396, 100');
           break;
 
       default:

@@ -8,12 +8,19 @@ import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/compat
 import { Observable, of } from 'rxjs';
 import { switchMap } from "rxjs/operators";
 
+export interface UserID{
+  userMail: string;
+  uid: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   public user$: Observable<User>;
+
+  public usuario: any;
 
   constructor( private afAuth: AngularFireAuth,
                private afs: AngularFirestore,
@@ -23,6 +30,7 @@ export class AuthService {
                 this.user$ = this.afAuth.authState.pipe(
                   switchMap((user) => {
                     if (user) {
+                      this.usuario = user;
                       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
                     }
                     return of(null);
@@ -72,7 +80,9 @@ export class AuthService {
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();
-      this.msgCerrarSesion();
+      if (this.usuario) {
+        this.msgCerrarSesion();
+      }
     } catch (error) {
       console.log('Error ->', error)
     }

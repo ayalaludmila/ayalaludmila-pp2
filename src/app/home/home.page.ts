@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { SwiperOptions } from 'swiper';
+import { Navigation, Pagination, Swiper } from 'swiper';
 import { SwiperModule } from 'swiper/angular';
 
 @Component({
@@ -12,8 +13,20 @@ import { SwiperModule } from 'swiper/angular';
 })
 export class HomePage {
 
+  config: SwiperOptions = {
+
+  }
+
   constructor(private router: Router, public swiperModule: SwiperModule) {}
 
+  ngOnInit() {
+  const swiper = new Swiper('.swiper-home', {
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+  });
+}
 
   checkUserPassword(mail: HTMLInputElement, password: HTMLInputElement){
     if (mail.value == 'admin' && password.value == '12345') {

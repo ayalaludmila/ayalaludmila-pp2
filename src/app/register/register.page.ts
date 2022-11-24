@@ -24,23 +24,28 @@ export class RegisterPage implements OnInit {
         if (user) {
           console.log("User --> ", user);
           //mostrar mensaje de usuario registrado y salir volver a la pantalla principal
-
+          const toast = await this.toastController.create({
+            message: 'Usuario registrado',
+            duration: 2000,
+            cssClass: 'custom-toast'
+          });
           this.router.navigate(['/home']);
         }
       }else{
         const toast = await this.toastController.create({
-          message: 'Usuario registrado',
-          duration: 2000,
+          message: 'Ingrese un usuario y contraseña',
+          duration: 1500,
           cssClass: 'custom-toast'
         });
     
         await toast.present();
       }
       //redirigir a pagina de principal
+      /*
       setTimeout(() => {
         this.router.navigate(['/home']);
       }, 2000);
-      
+      */
     } catch (error) {
       console.log("Error: ", error);
     }

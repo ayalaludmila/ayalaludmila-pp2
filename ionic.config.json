@@ -1,7 +1,8 @@
 {
-  "name": "EasyShopApp",
+  "name": "EasyShop",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

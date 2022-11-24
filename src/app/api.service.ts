@@ -39,4 +39,13 @@ export class ApiService {
      //return this.http.get('https://16c1-186-124-61-158.sa.ngrok.io/pp2_crud/leerProducto.php', this.requestOptions);
   }
 
+  obtenerHistorial(data){
+    return this.http.get('http://localhost/pp2_crud/leerHistorial.php?uid='+data.uid);
+    //return this.http.get('https://16c1-186-124-61-158.sa.ngrok.io/pp2_crud/leerProducto.php', this.requestOptions);
+ }
+
+ guardarCompra(data){
+  return this.http.get('http://localhost/pp2_crud/guardarCompra.php?uid='+data.uid+'&productos='+data.productos);
+  //return this.http.get('https://16c1-186-124-61-158.sa.ngrok.io/pp2_crud/leerProducto.php', this.requestOptions);
+}
 }

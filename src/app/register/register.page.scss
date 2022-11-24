@@ -20,6 +20,7 @@ ion-row:first-child{
 
 form{
     margin: auto;
+    margin-top: 20%;
     width: 80%;
     height: 100%;
     
@@ -43,4 +44,8 @@ form ion-input:focus{
     background-color: rgb(172, 172, 172);
     border: 2px green solid;
     border-radius: 10px
+}
+
+ion-content{
+    align-content: center;
 }
