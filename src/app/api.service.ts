@@ -40,12 +40,14 @@ export class ApiService {
   }
 
   obtenerHistorial(data){
-    return this.http.get('http://localhost/pp2_crud/leerHistorial.php?uid='+data.uid);
+    return this.http.get('http://localhost/pp2_crud/leerHistorial.php?uid='+data);
     //return this.http.get('https://16c1-186-124-61-158.sa.ngrok.io/pp2_crud/leerProducto.php', this.requestOptions);
  }
 
  guardarCompra(data){
-  return this.http.get('http://localhost/pp2_crud/guardarCompra.php?uid='+data.uid+'&productos='+data.productos);
+  const d = new Date("2015-03-25");
+  console.log(d);
+  return this.http.get('http://localhost/pp2_crud/guardarCompra.php?uid='+data.uid+'&productos='+data.productos+'&date='+d);
   //return this.http.get('https://16c1-186-124-61-158.sa.ngrok.io/pp2_crud/leerProducto.php', this.requestOptions);
 }
 }

@@ -36,13 +36,15 @@ import { CommonModule } from '@angular/common';
 
 import { ModalProductMap } from "./menu/map/modal.product.map";
 
+import { ModalHistorial } from "./menu/historial/modal.historial";
+
 @NgModule({
   declarations: [AppComponent, ModalProductMap],
   imports: [ComponentsModule, HttpClientModule, BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule, SwiperModule,
   AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule
   ],
-  providers: [ ModalPaymentPage, Stripe, LottieSplashScreen, ProductService, BarcodeScanner, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ ModalHistorial, ModalPaymentPage, Stripe, LottieSplashScreen, ProductService, BarcodeScanner, ModalProduct, SearchPage, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

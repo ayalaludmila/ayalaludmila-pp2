@@ -11,7 +11,6 @@ import { ProductMap } from './modal.product.model';
 export class ModalProductMap implements OnInit {
     
   public data : Array<ProductMap>;
-  public filterNumber : String;
 
   constructor(private modalCtrl: ModalController, private apiService: ApiService) {}
 

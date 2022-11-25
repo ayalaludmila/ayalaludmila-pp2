@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+
+      <ion-title size="small" horizontal="center">Detalle de compra</ion-title>
+ 
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content id="modal" class="ion-padding">
+  
+    <ion-list id="lista" lines="none">
+
+          <ion-item *ngFor="let product of productos">
+            <ion-label id="product.id_producto">
+                {{product.descripcion}}
+            </ion-label>
+            <ion-label id="product.id_producto">
+                {{product.amount}}
+            </ion-label>
+            <ion-label id="product.id_producto">
+                {{product.precio}}
+            </ion-label>
+          </ion-item>
+
+      </ion-list>

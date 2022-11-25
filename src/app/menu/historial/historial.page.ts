@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ModalHistorial } from './modal.historial';
+
 
 @Component({
   selector: 'app-historial',
@@ -9,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HistorialPage implements OnInit {
   
-  constructor( private authService: AuthService, private apiService: ApiService) { }
+  constructor( private authService: AuthService, private apiService: ApiService, private modalCtrl: ModalController) { }
 
   historial: Array<any> = [];
 
@@ -17,7 +20,7 @@ export class HistorialPage implements OnInit {
   ngOnInit() {
     //buscar historial de usuario
     console.log(this.authService.usuario.email, this.authService.usuario.uid);
-    this.buscarHistorial();
+    console.log(this.historial);
   }
 
   ionViewWillEnter() {
@@ -32,5 +35,21 @@ export class HistorialPage implements OnInit {
     },(error: any) => {
       console.log("ERROR ===", error);
     });
+  }
+
+  async openModal(compra_id){
+    const modal = await this.modalCtrl.create({
+      component: ModalHistorial,
+      componentProps: { 
+        historial: this.historial,
+        compraId : compra_id 
+      }
+    });
+    
+    modal.present();
+    
+    const { data, role } = await modal.onWillDismiss();
+
+ 
   }
 }

@@ -15,7 +15,7 @@
         {{compra.fecha}}
       </ion-label>
       <ion-label>
-        {{compra.productos | currency:'USD' }}
+        {{compra.gasto_total | currency:'USD' }}
       </ion-label>
       <ion-button id="open-modal" expand="block" color="secondary" (click)="openModal(compra.id)">
         <ion-icon name="search"></ion-icon>
