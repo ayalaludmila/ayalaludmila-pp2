@@ -1,6 +1,8 @@
 <?php      
 include 'config.php';
 
+header('Access-Control-Allow-Origin: *');
+
 //declara array para guardar datos
 $data = array();
 
@@ -11,7 +13,7 @@ $query = new mysqli('localhost','root', '', 'supermercado_pp2.sql');
 $resultado = $query->query('select * from tbl_producto');
 
 //se recorren los datos obtenidos y se guarda en el $data
-while($row = mysqli_fetch_array($resultado)){
+while($row = mysqli_fetch_assoc($resultado)){
     $data[] = $row;
 }
 
