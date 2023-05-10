@@ -4,7 +4,6 @@ import { ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalProductMap } from './modal.product.map';
 
-import imageMapResize from 'image-map-resizer';
 import { ApiService } from 'src/app/api.service';
 import { ProductMap } from "./modal.product.model";
 
@@ -61,15 +60,12 @@ export class MapPage implements OnInit {
 
   ngOnInit() {
     this.buscarProducto();
-    imageMapResize();
   }
 
   ngAfterViewInit(){
-    imageMapResize();
   }
 
   ionViewDidLoad() {
-    imageMapResize();
   }
 
   handleChange(e){
